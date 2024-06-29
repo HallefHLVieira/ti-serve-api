@@ -26,3 +26,6 @@ Catalog style app
 - [] Senhas dos users precisam estar criptografadas
 - [] Os dados da aplicação precisam persistir em um banco PostgreSQL;
 - [] O user deve ser ideentificado por meio de um JWT
+
+## To developer
+- VS-code min version: 1.89
