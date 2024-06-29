@@ -19,6 +19,8 @@
     "typescript": "5.5.2"
   },
   "dependencies": {
-    "fastify": "4.28.0"
+    "dotenv": "16.4.5",
+    "fastify": "4.28.0",
+    "zod": "3.23.8"
   }
 }
