@@ -14,9 +14,54 @@ datasource db {
 }
 
 model User {
-  id    String @id @default(uuid())
-  name  String
-  email String @unique
+  id            String    @id @default(uuid())
+  name          String
+  email         String?   @unique
+  password_hash String
+  phone         String?
+  validated_at  DateTime?
+  created_at    DateTime  @default(now())
+  updated_at    DateTime  @updatedAt
+  deleted_at    DateTime
+
+  services    Service[]
+  evaluations Evaluation[]
 
   @@map("users")
+}
+
+model Service {
+  id           String    @id @default(uuid())
+  name         String    @unique
+  description  String?
+  latitude     Decimal
+  longitude    Decimal
+  validated_at DateTime?
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  deleted_at   DateTime
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
+
+  evaluations Evaluation[]
+
+  @@map("services")
+}
+
+model Evaluation {
+  id          Int      @id
+  note        Int
+  description String?
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  deleted_at  DateTime
+
+  user    User   @relation(fields: [user_id], references: [id])
+  user_id String
+
+  service   Service @relation(fields: [serviceId], references: [id])
+  serviceId String
+
+  @@map("evaluations")
 }
