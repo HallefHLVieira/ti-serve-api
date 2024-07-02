@@ -16,10 +16,9 @@ datasource db {
 model User {
   id            String    @id @default(uuid())
   name          String
-  email         String?   @unique
-  password_hash String
   phone         String    @unique
-  validated_at  DateTime?
+  password_hash String
+  is_valid      Boolean   @default(false)
   created_at    DateTime  @default(now())
   updated_at    DateTime  @updatedAt
   deleted_at    DateTime?
@@ -31,37 +30,55 @@ model User {
 }
 
 model Service {
-  id           String    @id @default(uuid())
-  name         String    @unique
+  id           String   @id @default(uuid())
+  name         String   @unique
   description  String?
-  latitude     Decimal
-  longitude    Decimal
-  validated_at DateTime?
-  created_at   DateTime  @default(now())
-  updated_at   DateTime  @updatedAt
+  is_valid     Boolean  @default(false)
+  street       String
+  number       Int
+  neighborhood String   @default("Benderville")
+  zip_code     String?
+  latitude     Decimal?
+  longitude    Decimal?
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
   deleted_at   DateTime
 
   user    User   @relation(fields: [user_id], references: [id])
   user_id String
 
   evaluations Evaluation[]
+  Phone       Phone[]
 
   @@map("services")
 }
 
 model Evaluation {
-  id          Int      @id
-  note        Int
-  description String?
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
-  deleted_at  DateTime
+  id         Int      @id
+  liked      Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime
 
   user    User   @relation(fields: [user_id], references: [id])
   user_id String
 
-  service   Service @relation(fields: [serviceId], references: [id])
-  serviceId String
+  service    Service @relation(fields: [service_id], references: [id])
+  service_id String
 
   @@map("evaluations")
+}
+
+model Phone {
+  id          Int      @id
+  number      String   @unique
+  is_whatsapp Boolean  @default(false)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  deleted_at  DateTime
+
+  service    Service @relation(fields: [service_id], references: [id])
+  service_id String
+
+  @@map("phones")
 }
