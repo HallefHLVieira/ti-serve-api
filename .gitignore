@@ -6,3 +6,5 @@ build
 
 # environments variables
 .env
+
+coverage
