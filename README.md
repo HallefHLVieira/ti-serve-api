@@ -17,7 +17,7 @@ Catalog style app
 
 ## Regras de negócio(RNs)
 <!-- sempre associado ao requisito funcional -->
-- [ ] O usuário não pode ter e-mail duplicado;
+- [ ] O usuário não pode ter celular duplicado;
 - [ ] Usuário não pode visualizar nada sem estar logado;
 - [ ] Criação de serviços só pode ser aprovado por adms;
 
