@@ -1,16 +1,25 @@
-import { expect, describe, it } from 'vitest'
+import { expect, describe, it, beforeEach } from 'vitest'
 import { RegisterUseCase } from './register'
 import { compare } from 'bcryptjs'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
 import { UserAlreeadyExistsError } from './errors/user-already-exists'
 
+// ATENTION
+// sut = system under test ou variável principal que está sendo testada
+
+let inMemoryUsersRepository: InMemoryUsersRepository
+let sut: RegisterUseCase
+
 describe('Register Use Case', () => {
+  beforeEach(() => {
+    inMemoryUsersRepository = new InMemoryUsersRepository()
+    sut = new RegisterUseCase(inMemoryUsersRepository)
+  })
+
   it('should hash user password upan registration', async () => {
     expect.assertions(1)
-    const inMemoryUsersRepository = new InMemoryUsersRepository()
-    const registerUseCase = new RegisterUseCase(inMemoryUsersRepository)
 
-    const { user } = await registerUseCase.execute({
+    const { user } = await sut.execute({
       name: 'John Doe',
       phone: '99999999999',
       password: '123456',
@@ -26,19 +35,17 @@ describe('Register Use Case', () => {
 
   it('should not be able to register whit same phone twice', async () => {
     expect.assertions(1)
-    const inMemoryUsersRepository = new InMemoryUsersRepository()
-    const registerUseCase = new RegisterUseCase(inMemoryUsersRepository)
 
     const phone = '99999999999'
 
-    await registerUseCase.execute({
+    await sut.execute({
       name: 'John Doe',
       phone,
       password: '123456',
     })
 
     await expect(() =>
-      registerUseCase.execute({
+      sut.execute({
         name: 'John Doe',
         phone,
         password: '123456',
@@ -48,10 +55,8 @@ describe('Register Use Case', () => {
 
   it('should be able to register', async () => {
     expect.assertions(1)
-    const inMemoryUsersRepository = new InMemoryUsersRepository()
-    const registerUseCase = new RegisterUseCase(inMemoryUsersRepository)
 
-    const { user } = await registerUseCase.execute({
+    const { user } = await sut.execute({
       name: 'John Doe',
       phone: '99999999999',
       password: '123456',
