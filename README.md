@@ -21,6 +21,7 @@ Catalog style app
 - [x] O usuário não pode ter o mesmo número de celular de outra pessoa;
 - [ ] Usuário não pode visualizar nada sem estar logado;
 - [ ] Criação de serviços só pode ser aprovado por adms;
+- [ ] Usuário não pode curtir um serviço mais de uma vez;
 
 ## Requisitos não funcionais(RFNs)
 <!-- não parte do cliente -->
