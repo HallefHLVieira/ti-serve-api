@@ -30,19 +30,19 @@ model User {
 }
 
 model Service {
-  id           String   @id @default(uuid())
-  name         String   @unique
-  description  String?
-  is_valid     Boolean  @default(false)
+  id           String    @id @default(uuid())
+  name         String    @unique
+  description  String
+  is_valid     Boolean   @default(false)
   street       String
   number       Int
-  neighborhood String   @default("Benderville")
+  neighborhood String    @default("Benderville")
   zip_code     String?
   latitude     Decimal?
   longitude    Decimal?
-  created_at   DateTime @default(now())
-  updated_at   DateTime @updatedAt
-  deleted_at   DateTime
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  deleted_at   DateTime?
 
   user    User   @relation(fields: [user_id], references: [id])
   user_id String

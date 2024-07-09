@@ -6,15 +6,15 @@ Catalog style app
 <!-- tudo que o usuário vai fazer -->
 - [x] Deve ser possível se cadastrar como usuário;
 - [x] Deve ser possível se autenticar como usuário;
-- [ ] Deve ser possível obter o perfil de um usuário logado;
+- [x] Deve ser possível obter o perfil de um usuário logado;
   
-- [ ] Deve ser possível solicitar o cadasto do seu serviço;
-- [ ] Deve ser possível visualizar os serviços cadastrados;
-- [ ] Deve ser possível buscar um serviço pelo nome;
-- [ ] Deve ser possível buscar/visualizar serviços próximos;
+- [] Deve ser possível solicitar o cadasto do seu serviço;
+- [] Deve ser possível visualizar os serviços cadastrados;
+- [] Deve ser possível buscar um serviço pelo nome;
+- [] Deve ser possível buscar/visualizar serviços próximos;
 
-- [ ] Deve ser possível aprovar um cadastro de serviço;
-- [ ] Deve ser possível avaliar os seviços;
+- [] Deve ser possível aprovar um cadastro de serviço;
+- [] Deve ser possível um usuário dar like para um seviço;
 
 ## Regras de negócio(RNs)
 <!-- sempre associado ao requisito funcional -->
