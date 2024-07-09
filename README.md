@@ -7,21 +7,23 @@ Catalog style app
 - [x] Deve ser possível se cadastrar como usuário;
 - [x] Deve ser possível se autenticar como usuário;
 - [x] Deve ser possível obter o perfil de um usuário logado;
+- [ ] Deve ser possível atualizar os dados do perfil;
   
-- [] Deve ser possível solicitar o cadasto do seu serviço;
-- [] Deve ser possível visualizar os serviços cadastrados;
+- [x] Deve ser possível cadastrar um serviço;
+- [] Deve ser possível visualizar os serviços ativos;
+- [] Deve ser possível visualizar os serviços que aguardam ativação;
 - [] Deve ser possível buscar um serviço pelo nome;
+- [] Deve ser possível ativar um serviço
 - [] Deve ser possível buscar/visualizar serviços próximos;
 
-- [] Deve ser possível aprovar um cadastro de serviço;
 - [] Deve ser possível um usuário dar like para um seviço;
 
 ## Regras de negócio(RNs)
 <!-- sempre associado ao requisito funcional -->
 - [x] O usuário não pode ter o mesmo número de celular de outra pessoa;
-- [ ] Usuário não pode visualizar nada sem estar logado;
-- [ ] Criação de serviços só pode ser aprovado por adms;
-- [ ] Usuário não pode curtir um serviço mais de uma vez;
+- [] Usuário não pode visualizar nada sem estar logado;
+- [] Criação de serviços só pode ser aprovado por adms;
+- [] Usuário não pode curtir um serviço mais de uma vez;
 
 ## Requisitos não funcionais(RFNs)
 <!-- não parte do cliente -->
