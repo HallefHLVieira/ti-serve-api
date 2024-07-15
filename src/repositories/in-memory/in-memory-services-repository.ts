@@ -17,7 +17,7 @@ export class InMemoryServicesRepository implements IServicesRepository {
       id: randomUUID(),
       name: data.name,
       description: data.description,
-      is_valid: data.is_valid ?? false,
+      is_valid: false,
       street: data.street,
       number: data.number,
       neighborhood: 'Benderville',
@@ -32,5 +32,12 @@ export class InMemoryServicesRepository implements IServicesRepository {
 
     this.servicesTable.push(service)
     return service
+  }
+
+  async listServices(): Promise<[] | Service[]> {
+    const services = await this.servicesTable.filter(
+      (service) => service.is_valid === true,
+    )
+    return services
   }
 }

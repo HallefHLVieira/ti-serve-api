@@ -7,7 +7,6 @@ export class PrismaServicesRepository implements IServicesRepository {
     const service = await prisma.service.create({
       data,
     })
-
     return service
   }
 
@@ -17,7 +16,15 @@ export class PrismaServicesRepository implements IServicesRepository {
         name,
       },
     })
-
     return service
+  }
+
+  async listServices(): Promise<[] | Service[]> {
+    const services = await prisma.service.findMany({
+      where: {
+        is_valid: true,
+      },
+    })
+    return services
   }
 }
