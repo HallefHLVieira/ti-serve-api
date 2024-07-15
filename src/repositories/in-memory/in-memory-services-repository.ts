@@ -5,6 +5,13 @@ import { randomUUID } from 'node:crypto'
 export class InMemoryServicesRepository implements IServicesRepository {
   public servicesTable: Service[] = []
 
+  async findByname(name: string): Promise<Service | null> {
+    const serviceAlreadyExists = await this.servicesTable.find(
+      (item) => item.name === name,
+    )
+    return serviceAlreadyExists ?? null
+  }
+
   async create(data: Prisma.ServiceUncheckedCreateInput) {
     const service = {
       id: randomUUID(),
