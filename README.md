@@ -8,7 +8,7 @@ Catalog style app
 - [x] Deve ser possível se autenticar;
 - [x] Deve ser possível visualizar o próprio perfil;
 - [ ] Deve ser possível atualizar os dados do perfil;
-- [ ] Deve ser possível listar os serviços cadastrados;  
+- [x] Deve ser possível listar os serviços cadastrados e ativos;  
 - [x] Deve ser possível um usuário cadastrar seu próprio serviço;
 - [ ] Deve ser possível um usuário listar os próprios serviços;
 - [ ] Deve ser possível buscar um serviço pelo nome;
