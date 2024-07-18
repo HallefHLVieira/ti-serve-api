@@ -3,26 +3,29 @@
 Catalog style app
 
 ## Requisitos funcionais(RFs)
-<!-- Tudo que o usuário poderá fazer no sistema -->
+<!-- Tudo que o usuário poderá fazer em relação a ele -->
 - [x] Deve ser possível se cadastrar;
 - [x] Deve ser possível se autenticar;
-- [x] Deve ser possível visualizar o próprio perfil;
+- [ ] Deve ser possível visualizar o próprio perfil;
 - [ ] Deve ser possível atualizar os dados do perfil;
-- [x] Deve ser possível listar os serviços cadastrados e ativos;  
-- [x] Deve ser possível um usuário cadastrar seu próprio serviço;
-- [ ] Deve ser possível um usuário listar os próprios serviços;
-- [ ] Deve ser possível buscar um serviço pelo nome;
-- [ ] Deve ser possível um usuário ADM visualizar os serviços que aguardam ativação;
-- [ ] Deve ser possível um usuário ADM aprovar a criação de um serviço;
-- [ ] Deve ser possível um usuário dar like para um seviço;
 
-<!-- Funções em backlogs -->
-- [ ] Deve ser possível filtrar os serviços próximos por distância;
+<!-- Tudo que o usuário poderá fazer com relação a serviços -->
+- [x] Deve ser possível listar os serviços cadastrados e ativos;  
+- [x] Deve ser possível cadastrar seu próprio serviço;
+- [ ] Deve ser possível listar os próprios serviços;
+- [ ] Deve ser possível buscar um serviço pelo nome;
+- [ ] Deve ser possível curtir um serviço;
+
+<!-- Tudo que um usuário ADM pode fazer -->
+- [ ] Deve ser possível visualizar os serviços que aguardam validação;
+- [ ] Deve ser possível aprovar a ativação de um serviço;
+- [ ] Deve ser possível um usuário ADM inativar qualquer serviço;
 
 ## Regras de negócio(RNs)
 <!-- Sempre associado ao requisito funcional -->
 - [x] O usuário não pode ter o mesmo número de celular de outra pessoa;
-- [ ] Todo usuário criado recebe o status de não verificado;
+- [x] Todo usuário criado recebe o status de não verificado;
+- [x] Todas as ações chamadas pelo user devem ser authenticadas com o token jwt
 - [ ] Apenas usuários ADM's pode verificar os usuários recém criados;
 - [ ] Usuário não pode visualizar nada sem estar logado;
 - [ ] O login inicialmente possuirá um time de 20 minutos para expirar;
@@ -35,7 +38,7 @@ Catalog style app
 - [x] Senhas dos users precisam ter no mínimo 6 caracteres;
 - [x] Senhas dos users precisam estar criptografadas;
 - [x] Os dados da aplicação precisam persistir em um banco PostgreSQL;
-- [ ] O user deve ser ideentificado por meio de um JWT;
+- [x] O user deve ser ideentificado por meio de um JWT;
 
 ## To developer
 - VS-code min version: 1.89

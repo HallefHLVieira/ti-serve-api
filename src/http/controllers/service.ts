@@ -3,7 +3,7 @@ import { FastifyRequest, FastifyReply } from 'fastify'
 import { makeCreateServiceUseCase } from '@/use-cases/factories/make-create-service-use-case'
 import { ServiceAlreadyExistsError } from '@/use-cases/errors/service-already-exists'
 
-export async function createService(
+export async function createServiceController(
   request: FastifyRequest,
   reply: FastifyReply,
 ) {

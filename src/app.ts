@@ -24,7 +24,7 @@ app.setErrorHandler((error, _, replay) => {
   if (env.NODE_ENV !== 'production') {
     console.error(error)
   } else {
-    // TODO: Here we should loggg to an external tool like Datalog/NewRelic/Sentry
+    // TODO: Here we should log to an external tool like Datalog/NewRelic/Sentry
   }
 
   return replay.status(500).send({ message: 'Internal server error.' })
