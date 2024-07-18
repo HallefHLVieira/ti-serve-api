@@ -13,7 +13,7 @@ Catalog style app
 - [x] Deve ser possível listar os serviços cadastrados e ativos;  
 - [x] Deve ser possível cadastrar seu próprio serviço;
 - [x] Deve ser possível listar os próprios serviços;
-- [ ] Deve ser possível buscar um serviço pelo nome;
+- [x] Deve ser possível buscar um serviço pelo nome;
 - [ ] Deve ser possível curtir um serviço;
 
 <!-- Tudo que um usuário ADM pode fazer -->
