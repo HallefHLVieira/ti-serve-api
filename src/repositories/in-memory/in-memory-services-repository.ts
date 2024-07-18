@@ -40,4 +40,22 @@ export class InMemoryServicesRepository implements IServicesRepository {
     )
     return services
   }
+
+  async servicesByUser(userId: string): Promise<[] | Service[]> {
+    const services = await this.servicesTable.filter(
+      (service) => service.user_id === userId,
+    )
+    return services
+  }
+
+  async serviceByName(name: string): Promise<Service | null> {
+    const service = await this.servicesTable.find(
+      (service) => service.name === name,
+    )
+
+    if (service) {
+      return service
+    }
+    return null
+  }
 }

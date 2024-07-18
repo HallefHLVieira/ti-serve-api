@@ -6,13 +6,13 @@ Catalog style app
 <!-- Tudo que o usuário poderá fazer em relação a ele -->
 - [x] Deve ser possível se cadastrar;
 - [x] Deve ser possível se autenticar;
-- [ ] Deve ser possível visualizar o próprio perfil;
+- [x] Deve ser possível visualizar o próprio perfil;
 - [ ] Deve ser possível atualizar os dados do perfil;
 
 <!-- Tudo que o usuário poderá fazer com relação a serviços -->
 - [x] Deve ser possível listar os serviços cadastrados e ativos;  
 - [x] Deve ser possível cadastrar seu próprio serviço;
-- [ ] Deve ser possível listar os próprios serviços;
+- [x] Deve ser possível listar os próprios serviços;
 - [ ] Deve ser possível buscar um serviço pelo nome;
 - [ ] Deve ser possível curtir um serviço;
 

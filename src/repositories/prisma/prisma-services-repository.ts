@@ -27,4 +27,22 @@ export class PrismaServicesRepository implements IServicesRepository {
     })
     return services
   }
+
+  async servicesByUser(userId: string): Promise<[] | Service[]> {
+    const services = await prisma.service.findMany({
+      where: {
+        user_id: userId,
+      },
+    })
+    return services
+  }
+
+  async serviceByName(name: string): Promise<Service | null> {
+    const service = await prisma.service.findUnique({
+      where: {
+        name,
+      },
+    })
+    return service
+  }
 }
