@@ -1,17 +1,17 @@
 import { expect, describe, it, beforeEach } from 'vitest'
 import { ServiceUseCase } from './service'
 import { InMemoryServicesRepository } from '@/repositories/in-memory/in-memory-services-repository'
-import { GetServiceByUserUseCase } from './get-service-by-name'
+import { GetServiceByNameUseCase } from './get-service-by-name'
 
 let servicesRepository: InMemoryServicesRepository
 let sut: ServiceUseCase
-let listSut: GetServiceByUserUseCase
+let listSut: GetServiceByNameUseCase
 
 describe('Get Services by Name Use Case', () => {
   beforeEach(() => {
     servicesRepository = new InMemoryServicesRepository()
     sut = new ServiceUseCase(servicesRepository)
-    listSut = new GetServiceByUserUseCase(servicesRepository)
+    listSut = new GetServiceByNameUseCase(servicesRepository)
   })
 
   it('should be return a service when a correctly name', async () => {

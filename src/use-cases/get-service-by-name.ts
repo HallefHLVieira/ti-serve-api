@@ -9,7 +9,7 @@ interface FetchServicesByUserResponse {
   service: Service | null
 }
 
-export class GetServiceByUserUseCase {
+export class GetServiceByNameUseCase {
   constructor(private servicesRepository: IServicesRepository) {}
 
   async execute({
