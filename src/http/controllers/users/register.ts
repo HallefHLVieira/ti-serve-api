@@ -3,7 +3,10 @@ import { FastifyRequest, FastifyReply } from 'fastify'
 import { UserAlreeadyExistsError } from '@/use-cases/errors/user-already-exists'
 import { makeRegisterUseCase } from '@/use-cases/factories/make-register-use-case'
 
-export async function register(request: FastifyRequest, reply: FastifyReply) {
+export async function registerController(
+  request: FastifyRequest,
+  reply: FastifyReply,
+) {
   const registerBodySchema = z.object({
     name: z.string(),
     password: z.string().min(6),
@@ -13,7 +16,7 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
   const { name, password, phone } = registerBodySchema.parse(request.body)
 
   try {
-    // calling useCase at factory
+    // Get use-case by factory
     const registerUseCase = makeRegisterUseCase()
 
     await registerUseCase.execute({
