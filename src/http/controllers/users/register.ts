@@ -16,7 +16,6 @@ export async function registerController(
   const { name, password, phone } = registerBodySchema.parse(request.body)
 
   try {
-    // Get use-case by factory
     const registerUseCase = makeRegisterUseCase()
 
     await registerUseCase.execute({

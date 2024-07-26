@@ -7,6 +7,7 @@ Catalog style app
 - [x] Deve ser possível se cadastrar;
 - [x] Deve ser possível se autenticar;
 - [x] Deve ser possível visualizar o próprio perfil;
+
 - [ ] Deve ser possível atualizar os dados do perfil;
 
 <!-- Tudo que o usuário poderá fazer com relação a serviços -->
