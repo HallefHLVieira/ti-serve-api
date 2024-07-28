@@ -1,0 +1,86 @@
+import { expect, describe, it, beforeEach } from 'vitest'
+import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
+import { hash } from 'bcryptjs'
+import { UpdateUserProfileUseCase } from './update-user-profile'
+import { UserNotFoundOrInvalidError } from './errors/user-not-found-or-invalid-error'
+import { InvalidPhoneToUpdateError } from './errors/invalid-phone-to-update-error'
+
+// sut = system under test ou variável principal que está sendo testada
+
+let inMemoryUsersRepository: InMemoryUsersRepository
+let sut: UpdateUserProfileUseCase
+
+describe('Update an user-profile Use Case', () => {
+  beforeEach(() => {
+    inMemoryUsersRepository = new InMemoryUsersRepository()
+    sut = new UpdateUserProfileUseCase(inMemoryUsersRepository)
+  })
+
+  it('should be able update an user-profile', async () => {
+    expect.assertions(3)
+
+    const createUser = await inMemoryUsersRepository.create({
+      name: 'John Doe',
+      phone: '99999999999',
+      password_hash: await hash('123456', 5),
+    })
+
+    const { user } = await sut.execute({
+      userId: createUser.id,
+      data: {
+        name: 'John Does',
+        phone: '88888888888',
+      },
+    })
+
+    expect(user.id).toEqual(createUser.id)
+    expect(user.name).toEqual('John Does')
+    expect(user.phone).toEqual('88888888888')
+  })
+
+  it('should be not able update an user-profile with already exists phone', async () => {
+    expect.assertions(1)
+
+    await inMemoryUsersRepository.create({
+      name: 'John Doe',
+      phone: '99999999999',
+      password_hash: await hash('123456', 5),
+    })
+
+    await inMemoryUsersRepository.create({
+      name: 'John Does',
+      phone: '88888888888',
+      password_hash: await hash('123456', 5),
+    })
+
+    expect(() =>
+      sut.execute({
+        userId: 'user-01',
+        data: {
+          name: 'John Does',
+          phone: '88888888888',
+        },
+      }),
+    ).rejects.toBeInstanceOf(InvalidPhoneToUpdateError)
+  })
+
+  it('should be not able update an user-profile with user id fake or invalid', async () => {
+    expect.assertions(1)
+
+    await inMemoryUsersRepository.create({
+      name: 'John Doe',
+      phone: '99999999999',
+      password_hash: await hash('123456', 5),
+    })
+
+    expect(() =>
+      sut.execute({
+        userId: 'non-existing-id',
+        data: {
+          name: 'John Does',
+          phone: '88888888888',
+        },
+      }),
+    ).rejects.toBeInstanceOf(UserNotFoundOrInvalidError)
+  })
+})
