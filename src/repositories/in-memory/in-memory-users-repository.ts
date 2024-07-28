@@ -1,5 +1,7 @@
 import { Prisma, Role, User } from '@prisma/client'
 import { IUsersRepository } from '../users-repository'
+import { UserNotFoundOrInvalidError } from '@/use-cases/errors/user-not-found-or-invalid-error'
+import { InvalidPhoneToUpdateError } from '@/use-cases/errors/invalid-phone-to-update-error'
 
 export class InMemoryUsersRepository implements IUsersRepository {
   public usersTable: User[] = []
@@ -35,5 +37,35 @@ export class InMemoryUsersRepository implements IUsersRepository {
       return null
     }
     return user
+  }
+
+  async updateProfile(
+    userId: string,
+    data: Prisma.UserUpdateInput,
+  ): Promise<User | null> {
+    console.log('user id in repository: ', userId)
+    const checkIfUserPhoneAlreadyExists = this.usersTable.find(
+      (item) => item.phone === data.phone,
+    )
+
+    if (checkIfUserPhoneAlreadyExists) {
+      throw new InvalidPhoneToUpdateError()
+    }
+    const userIndex = this.usersTable.findIndex((item) => item.id === userId)
+    console.log('userIndex: ', userIndex)
+
+    if (!(userIndex >= 0)) {
+      throw new UserNotFoundOrInvalidError()
+    }
+    const { name, phone } = data
+    const user = this.usersTable[userIndex]
+    const updateUser = Object.assign(user, {
+      name,
+      phone,
+      updated_at: new Date(),
+    })
+
+    this.usersTable[userIndex] = updateUser
+    return updateUser
   }
 }
