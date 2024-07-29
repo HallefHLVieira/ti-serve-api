@@ -24,6 +24,13 @@ export class PrismaServicesRepository implements IServicesRepository {
       where: {
         is_valid: true,
       },
+      // select: {
+      //   id: true,
+      //   name: true,
+      //   description: true,
+      //   Phone: true,
+      //   evaluations: true,
+      // },
     })
     return services
   }
