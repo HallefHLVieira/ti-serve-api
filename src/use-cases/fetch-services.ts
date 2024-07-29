@@ -5,7 +5,7 @@ interface ServiceUseCaseResponse {
   services: Service[]
 }
 
-export class ListServiceUseCase {
+export class FetchServiceUseCase {
   constructor(private servicesRepository: IServicesRepository) {}
 
   async execute(): Promise<ServiceUseCaseResponse> {

@@ -1,17 +1,17 @@
 import { expect, describe, it, beforeEach } from 'vitest'
 import { ServiceUseCase } from './service'
-import { ListServiceUseCase } from './list-services'
+import { FetchServiceUseCase } from './fetch-services'
 import { InMemoryServicesRepository } from '@/repositories/in-memory/in-memory-services-repository'
 
 let servicesRepository: InMemoryServicesRepository
 let sut: ServiceUseCase
-let listSut: ListServiceUseCase
+let listSut: FetchServiceUseCase
 
 describe('Service Use Case', () => {
   beforeEach(() => {
     servicesRepository = new InMemoryServicesRepository()
     sut = new ServiceUseCase(servicesRepository)
-    listSut = new ListServiceUseCase(servicesRepository)
+    listSut = new FetchServiceUseCase(servicesRepository)
   })
 
   it('should be able see a empty list with active services', async () => {
