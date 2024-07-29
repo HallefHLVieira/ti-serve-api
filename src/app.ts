@@ -21,8 +21,13 @@ app.register(fastifyJwt, {
 
 app.register(fastifyCookie)
 
-app.register(usersRoutes)
-app.register(servicesRoutes)
+app.register(
+  async (app) => {
+    app.register(usersRoutes)
+    app.register(servicesRoutes)
+  },
+  { prefix: '/catalog-api/v1' },
+)
 
 // This is a global errors validation
 app.setErrorHandler((error, _, replay) => {

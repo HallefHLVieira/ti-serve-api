@@ -2,19 +2,20 @@
 
 Catalog style app
 
+## Definition of Don
+To eacth functionality, the DOR includes: Repository, use-case, factory, controller and route.
+
+
 ## Requisitos funcionais(RFs)
-<!-- Tudo que o usuário poderá fazer em relação a ele -->
+<!-- RF to Users -->
 - [x] Deve ser possível se cadastrar;
 - [x] Deve ser possível se autenticar;
 - [x] Deve ser possível visualizar o próprio perfil;
-
-- [ ] Deve ser possível atualizar os dados do perfil;
-
-<!-- Tudo que o usuário poderá fazer com relação a serviços -->
-- [x] Deve ser possível listar os serviços cadastrados e ativos;  
-- [x] Deve ser possível cadastrar seu próprio serviço;
-- [x] Deve ser possível listar os próprios serviços;
-- [x] Deve ser possível buscar um serviço pelo nome;
+- [x] Deve ser possível atualizar os dados do próprio perfil;
+- [ ] Deve ser possível listar os próprios serviços
+- [ ] Deve ser possível listar os serviços ativos;
+- [ ] Deve ser possível cadastrar seu próprio serviço;
+- [ ] Deve ser possível buscar um serviço pelo nome;
 - [ ] Deve ser possível curtir um serviço;
 
 <!-- Tudo que um usuário ADM pode fazer -->
