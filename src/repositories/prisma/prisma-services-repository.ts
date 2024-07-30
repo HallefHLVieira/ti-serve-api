@@ -40,8 +40,6 @@ export class PrismaServicesRepository implements IServicesRepository {
       where: {
         user_id: userId,
       },
-      // take: 10,
-      // skip: (page - 1) * 20,
     })
     return services
   }

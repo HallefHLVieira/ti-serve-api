@@ -2,6 +2,7 @@ import { FastifyInstance } from 'fastify'
 import { createServiceController } from '../services/service'
 import { verifyJWT } from '@/http/middlewares/verify-jwt'
 import { fetchServicesController } from './fetch-services'
+import { fetchServicesByUserController } from './fetch-services-by-user'
 // import { verifyUserRole } from '@/http/middlewares/verify-user-role'
 
 export async function servicesRoutes(app: FastifyInstance) {
@@ -14,4 +15,5 @@ export async function servicesRoutes(app: FastifyInstance) {
   )
 
   app.get('/services', fetchServicesController)
+  app.get('/services/user', fetchServicesByUserController)
 }
