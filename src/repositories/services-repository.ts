@@ -5,5 +5,5 @@ export interface IServicesRepository {
   findByname(name: string): Promise<Service | null>
   listServices(): Promise<Service[] | []>
   servicesByUser(userId: string): Promise<Service[] | []>
-  serviceByName(name: string): Promise<Service | null>
+  serviceById(id: string): Promise<Service | null>
 }

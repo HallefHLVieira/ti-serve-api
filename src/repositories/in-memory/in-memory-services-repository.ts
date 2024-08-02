@@ -48,9 +48,9 @@ export class InMemoryServicesRepository implements IServicesRepository {
     return services
   }
 
-  async serviceByName(name: string): Promise<Service | null> {
+  async serviceById(serviceId: string): Promise<Service | null> {
     const service = await this.servicesTable.find(
-      (service) => service.name === name,
+      (service) => service.id === serviceId,
     )
 
     if (service) {

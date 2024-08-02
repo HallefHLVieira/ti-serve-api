@@ -1,20 +1,40 @@
 import { expect, describe, it, beforeEach } from 'vitest'
 import { ServiceUseCase } from './service'
 import { InMemoryServicesRepository } from '@/repositories/in-memory/in-memory-services-repository'
-import { GetServiceByNameUseCase } from './get-service-by-name'
+import { GetServiceByIdUseCase } from './get-service-by-id'
 
 let servicesRepository: InMemoryServicesRepository
 let sut: ServiceUseCase
-let listSut: GetServiceByNameUseCase
+let serviceSut: GetServiceByIdUseCase
 
 describe('Get Services by Name Use Case', () => {
   beforeEach(() => {
     servicesRepository = new InMemoryServicesRepository()
     sut = new ServiceUseCase(servicesRepository)
-    listSut = new GetServiceByNameUseCase(servicesRepository)
+    serviceSut = new GetServiceByIdUseCase(servicesRepository)
   })
 
-  it('should be return a service when a correctly name', async () => {
+  it('Should be able return a service by id with valid id', async () => {
+    expect.assertions(1)
+
+    const serviceName = 'Geek-frames'
+
+    const resultSut = await sut.execute({
+      userId: 'user-01',
+      name: serviceName,
+      description: 'Loja de quadros decorativos.',
+      street: 'Avenida Juarez Bender',
+      number: 163,
+    })
+
+    const { service } = await serviceSut.execute({
+      serviceId: resultSut.service.id,
+    })
+
+    expect(service?.id).toEqual(resultSut.service.id)
+  })
+
+  it('Should be not able return a service with invalid id', async () => {
     expect.assertions(1)
 
     const serviceName = 'Geek-frames'
@@ -27,34 +47,10 @@ describe('Get Services by Name Use Case', () => {
       number: 163,
     })
 
-    await sut.execute({
-      userId: 'User-02',
-      name: 'Mercadinho da Carol',
-      description: 'Vende de tudo.',
-      street: 'Avenida Juarez Bender',
-      number: 155,
+    const { service } = await serviceSut.execute({
+      serviceId: 'invalid-id',
     })
 
-    const { service } = await listSut.execute({ name: serviceName })
-
-    expect(service?.name).toEqual(serviceName)
-  })
-
-  it('should be not return a service when a incorrectly name', async () => {
-    expect.assertions(1)
-
-    const serviceName = 'Geek-frames'
-
-    await sut.execute({
-      userId: 'user-01',
-      name: serviceName,
-      description: 'Loja de quadros decorativos.',
-      street: 'Avenida Juarez Bender',
-      number: 163,
-    })
-
-    const { service } = await listSut.execute({ name: 'Mercadinho da Carol' })
-
-    expect(service).toEqual(null)
+    expect(service?.id).toEqual(undefined)
   })
 })

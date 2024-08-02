@@ -14,9 +14,12 @@ To eacth functionality, the DOR includes: Repository, use-case, factory, control
 - [x] 4 - Deve ser possível atualizar o próprio perfil;
 - [x] 5 - Deve ser possível listar os próprios serviços;
 - [x] 6 - Deve ser possível listar os serviços ativos;
-- [ ] 7 - Deve ser possível cadastrar seu próprio serviço;
-- [ ] 8 - Deve ser possível buscar um serviço pelo nome;
+- [x] 7 - Deve ser possível cadastrar seu próprio serviço;
+- [x] 8 - Deve ser possível buscar um serviço pelo seu id;
 - [ ] 9 - Deve ser possível curtir um serviço;
+
+<!-- Ação futura -->
+- [ ] Deve ser possível buscar um serviço pelo nome;
 
 <!-- Tudo que um usuário ADM pode fazer -->
 - [ ] Deve ser possível visualizar os serviços que aguardam validação;

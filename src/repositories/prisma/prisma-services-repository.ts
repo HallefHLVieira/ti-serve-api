@@ -44,10 +44,10 @@ export class PrismaServicesRepository implements IServicesRepository {
     return services
   }
 
-  async serviceByName(name: string): Promise<Service | null> {
+  async serviceById(serviceId: string): Promise<Service | null> {
     const service = await prisma.service.findUnique({
       where: {
-        name,
+        id: serviceId,
       },
     })
     return service
