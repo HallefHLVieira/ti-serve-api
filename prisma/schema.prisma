@@ -60,11 +60,11 @@ model Service {
 }
 
 model Evaluation {
-  id         Int      @id
-  liked      Boolean  @default(true)
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  deleted_at DateTime
+  id         Int       @id
+  liked      Boolean   @default(true)
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  deleted_at DateTime?
 
   user    User   @relation(fields: [user_id], references: [id])
   user_id String
