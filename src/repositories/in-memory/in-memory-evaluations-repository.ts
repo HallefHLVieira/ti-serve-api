@@ -1,5 +1,6 @@
 import { Evaluation, Prisma } from '@prisma/client'
 import { IEvaluationsRepository } from '../evaluations-repository'
+import { EvaluationAlreadyExistsError } from '@/use-cases/errors/evaluations-already-exists'
 
 export class InMemoryEvaluationsRepository implements IEvaluationsRepository {
   public evaluationsTable: Evaluation[] = []
@@ -22,9 +23,24 @@ export class InMemoryEvaluationsRepository implements IEvaluationsRepository {
     const evaluationIndex = this.evaluationsTable.findIndex(
       (item) => item.service_id === serviceId && item.user_id === userId,
     )
-    if (evaluationIndex < 0) {
+    if (evaluationIndex >= 0) {
       throw new Error('não deu')
     }
     this.evaluationsTable.splice(evaluationIndex, 1)
+  }
+
+  async findByServiceAndUser(
+    userId: string,
+    serviceId: string,
+  ): Promise<Evaluation> {
+    const evaluationIndex = this.evaluationsTable.findIndex(
+      (item) => item.service_id === serviceId && item.user_id === userId,
+    )
+    console.log('\nitem index ->', evaluationIndex)
+
+    if (evaluationIndex >= 0) {
+      throw new EvaluationAlreadyExistsError()
+    }
+    return this.evaluationsTable[evaluationIndex]
   }
 }

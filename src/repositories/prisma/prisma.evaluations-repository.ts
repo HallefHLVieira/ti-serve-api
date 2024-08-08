@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/prisma'
-import { Prisma } from '@prisma/client'
+import { Evaluation, Prisma } from '@prisma/client'
 import { IEvaluationsRepository } from '../evaluations-repository'
 
 export class PrismaEvaluationsRepository implements IEvaluationsRepository {
@@ -8,6 +8,23 @@ export class PrismaEvaluationsRepository implements IEvaluationsRepository {
       data,
     })
     return evaluations
+  }
+
+  async findByServiceAndUser(
+    userId: string,
+    serviceId: string,
+  ): Promise<Evaluation> {
+    const evaluation = await prisma.evaluation.findFirst({
+      where: {
+        service_id: serviceId,
+        user_id: userId,
+      },
+    })
+
+    if (!evaluation) {
+      throw new Error('não achei follow')
+    }
+    return evaluation
   }
 
   async delete(userId: string, serviceId: string): Promise<void> {

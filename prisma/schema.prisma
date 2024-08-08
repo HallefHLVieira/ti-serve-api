@@ -60,7 +60,7 @@ model Service {
 }
 
 model Evaluation {
-  id         Int       @id
+  id         Int       @id @default(autoincrement())
   liked      Boolean   @default(true)
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt
