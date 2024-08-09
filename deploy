@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Nome do contêiner
+CONTAINER_NAME="catalog-api-prod"
+
+# Função para construir a nova imagem e reiniciar o contêiner
+buildAndRestartContainer() {
+    echo "Clear old images ..."
+    docker image prune -a -f
+
+    echo "Building new image"
+    docker build -t catalog-api:1.0 -f ./Dockerfile .
+    echo "New image successfully built."
+
+    echo "Restarting container ..."
+    docker stop $CONTAINER_NAME && docker rm $CONTAINER_NAME
+    docker run -d -p 3000:3000 --dns 8.8.8.8 --dns 8.8.4.4 -m 6GB --cpus 4 --name $CONTAINER_NAME catalog-api:1.0
+    echo "Container started with the new image."
+
+    # Conclusão do script
+    echo "Successfully concluded!"
+
+    # Message: Put script in second plan!
+    echo "Press Ctrl + Z to put script in second plan!"
+}
+
+# Execute script
+echo "Starting deployment script..."
+
+buildAndRestartContainer
