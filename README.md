@@ -16,7 +16,7 @@ To eacth functionality, the DOR includes: Repository, use-case, factory, control
 - [x] 6 - Deve ser possível listar os serviços ativos;
 - [x] 7 - Deve ser possível cadastrar seu próprio serviço;
 - [x] 8 - Deve ser possível buscar um serviço pelo seu id;
-- [x] 9 - Deve ser possível curtir um serviço;
+- [] 9 - Deve ser possível curtir um serviço;
 
 <!-- feats futuras -->
 - [ ] Deve ser possível buscar um serviço pelo nome;
