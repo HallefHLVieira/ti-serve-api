@@ -14,7 +14,7 @@ buildAndRestartContainer() {
 
     echo "Restarting container ..."
     docker stop $CONTAINER_NAME && docker rm $CONTAINER_NAME
-    docker run -d -p 3000:3000 --dns 8.8.8.8 --dns 8.8.4.4 -m 6GB --cpus 4 --name $CONTAINER_NAME catalog-api:1.0
+    docker run -d -p 53000:53000 --dns 8.8.8.8 --dns 8.8.4.4 -m 6GB --cpus 4 --name $CONTAINER_NAME catalog-api:1.0
     echo "Container started with the new image."
 
     # Conclusão do script
