@@ -12,7 +12,7 @@ app.register(fastifyJwt, {
   secret: env.JWT_SECRET,
   cookie: {
     cookieName: 'refreshToken',
-    signed: false, // sinalizando que o token não é assinado
+    signed: false,
   },
   sign: {
     expiresIn: '10m',
@@ -26,8 +26,13 @@ app.register(
     app.register(usersRoutes)
     app.register(servicesRoutes)
   },
-  { prefix: '/catalog-api/v1' },
+  { prefix: '/catalog-api' },
 )
+
+app.get('/catalog-api/livenesscheck', () => ({
+  service: 'services-catalog-api',
+  healthy: true,
+}))
 
 // This is a global errors validation
 app.setErrorHandler((error, _, replay) => {

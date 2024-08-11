@@ -10,12 +10,12 @@ export async function servicesRoutes(app: FastifyInstance) {
   app.addHook('onRequest', verifyJWT)
 
   app.post(
-    '/services',
+    '/v1/services',
     // { onRequest: [verifyUserRole('ADMIN')] },
     createServiceController,
   )
 
-  app.get('/services', fetchServicesController)
-  app.get('/services/user', fetchServicesByUserController)
-  app.get('/services/:serviceId', fetchServicesByIdController)
+  app.get('/v1/services', fetchServicesController)
+  app.get('/v1/services/user', fetchServicesByUserController)
+  app.get('/v1/services/:serviceId', fetchServicesByIdController)
 }
