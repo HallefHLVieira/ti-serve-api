@@ -16,18 +16,24 @@ To eacth functionality, the DOR includes: Repository, use-case, factory, control
 - [x] 6 - Deve ser possível listar os serviços ativos;
 - [x] 7 - Deve ser possível cadastrar seu próprio serviço;
 - [x] 8 - Deve ser possível buscar um serviço pelo seu id;
-- [ ] 9 - Deve ser possível curtir um serviço;
+- [x] 9 - Deve ser possível curtir um serviço;
 
-<!-- Ação futura -->
+<!-- feats futuras -->
 - [ ] Deve ser possível buscar um serviço pelo nome;
 
 <!-- Tudo que um usuário ADM pode fazer -->
+- [ ] Deve ser possível visualizar todos os membros que precisam ser verificados;
+- [ ] Deve ser possível verificar um usuário;
 - [ ] Deve ser possível visualizar os serviços que aguardam validação;
 - [ ] Deve ser possível aprovar a ativação de um serviço;
 - [ ] Deve ser possível um usuário ADM inativar qualquer serviço;
 
 ## Regras de negócio(RNs)
-<!-- Sempre associado ao requisito funcional -->
+<!-- TO RF 1 -->
+- [x] Todo novo registro de usuário, deve ser criado com um status de não verificado;
+- [] Todo status de verificação só pode ser atualizado por um administrador;
+- [] Todo processo de verificação, requer preenchimento de campos de identificação/localização
+  
 - [x] O usuário não pode ter o mesmo número de celular de outra pessoa;
 - [x] Todo usuário criado recebe o status de não verificado;
 - [x] Todas as ações chamadas pelo user devem ser authenticadas com o token jwt
