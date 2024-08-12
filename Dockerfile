@@ -7,7 +7,7 @@ COPY . .
 # TEST AND BUILD APPLICATION
 # RUN npm ci
 RUN npm install
-RUN npx prisma migrate
+RUN npx prisma migrate deploy
 RUN npm run build
 
 EXPOSE 53000
