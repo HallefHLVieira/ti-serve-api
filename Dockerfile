@@ -14,4 +14,4 @@ EXPOSE 53000
 CMD ["npm", "start"]
 #
 
-# HEALTHCHECK CMD curl -f http://localhost:3000/catalog-api/livenesscheck/ || exit 1
+HEALTHCHECK CMD curl -f http://localhost:3000/catalog-api/livenesscheck/ || exit 1

@@ -25,7 +25,7 @@ export class UserFollowServiceUseCase {
       throw new EvaluationAlreadyExistsError()
     }
 
-    const evaluation = await this.evaluationsRepository.create({
+    const evaluation = await this.evaluationsRepository.createOrUpdate({
       user_id: userId,
       service_id: serviceId,
     })

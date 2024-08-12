@@ -1,11 +1,11 @@
 import { Evaluation, Prisma } from '@prisma/client'
 import { IEvaluationsRepository } from '../evaluations-repository'
-import { EvaluationAlreadyExistsError } from '@/use-cases/errors/evaluations-already-exists'
+import { EvaluationNotFoundError } from '@/use-cases/errors/evaluations-not-found'
 
 export class InMemoryEvaluationsRepository implements IEvaluationsRepository {
   public evaluationsTable: Evaluation[] = []
 
-  async create(data: Prisma.EvaluationUncheckedCreateInput) {
+  async createOrUpdate(data: Prisma.EvaluationUncheckedCreateInput) {
     const evaluation = {
       id: 1,
       user_id: data.user_id,
@@ -23,8 +23,8 @@ export class InMemoryEvaluationsRepository implements IEvaluationsRepository {
     const evaluationIndex = this.evaluationsTable.findIndex(
       (item) => item.service_id === serviceId && item.user_id === userId,
     )
-    if (evaluationIndex >= 0) {
-      throw new Error('não deu')
+    if (evaluationIndex < 0) {
+      throw new EvaluationNotFoundError()
     }
     this.evaluationsTable.splice(evaluationIndex, 1)
   }
@@ -34,12 +34,13 @@ export class InMemoryEvaluationsRepository implements IEvaluationsRepository {
     serviceId: string,
   ): Promise<Evaluation> {
     const evaluationIndex = this.evaluationsTable.findIndex(
-      (item) => item.service_id === serviceId && item.user_id === userId,
+      (item) =>
+        item.service_id === serviceId &&
+        item.user_id === userId &&
+        item.deleted_at === null,
     )
-    console.log('\nitem index ->', evaluationIndex)
-
-    if (evaluationIndex >= 0) {
-      throw new EvaluationAlreadyExistsError()
+    if (evaluationIndex < 0) {
+      throw new EvaluationNotFoundError()
     }
     return this.evaluationsTable[evaluationIndex]
   }
