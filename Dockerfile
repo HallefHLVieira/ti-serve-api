@@ -8,6 +8,7 @@ COPY . .
 # RUN npm ci
 RUN npm install
 RUN npx prisma migrate deploy
+RUN npx prisma db seed
 RUN npm run build
 
 EXPOSE 53000
