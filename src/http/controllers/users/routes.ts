@@ -8,7 +8,7 @@ import { updateProfileController } from './update-profile'
 
 export async function usersRoutes(app: FastifyInstance) {
   app.post('/users', registerController)
-  app.post('/sessions', authenticateController)
+  app.post('/v1/sessions', authenticateController)
 
   app.patch('/token/refresh', refreshController)
 

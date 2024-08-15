@@ -8,20 +8,26 @@ async function main() {
   const passwordHash = await hash('admin', 5)
   const date = await new Date()
 
-  await client.user.create({
-    data: {
-      id: randomUUID(),
-      name: 'admin',
-      phone: '99999999999',
-      password_hash: passwordHash,
-      is_valid: true,
-      role: 'ADMIN',
-      created_at: date,
-      updated_at: date,
-      deleted_at: null,
-    },
-  })
-  // console.log('prisma seed superuser: ', userAdmin)
+  const countUsers = await client.user.count()
+
+  if (countUsers === 0) {
+    await client.user.create({
+      data: {
+        id: randomUUID(),
+        name: 'admin',
+        phone: '99999999999',
+        password_hash: passwordHash,
+        is_valid: true,
+        role: 'ADMIN',
+        created_at: date,
+        updated_at: date,
+        deleted_at: null,
+      },
+    })
+    console.log('Seeder executed!')
+  } else {
+    console.log('Seeder not executed!')
+  }
 }
 main()
   .then(async () => {
