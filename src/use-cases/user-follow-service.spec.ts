@@ -1,26 +1,26 @@
 import { expect, describe, it, beforeEach } from 'vitest'
 import { UserFollowServiceUseCase } from './user-follow-service'
-import { InMemoryEvaluationsRepository } from '../repositories/in-memory/in-memory-evaluations-repository'
-import { EvaluationAlreadyExistsError } from './errors/evaluations-already-exists'
+import { InMemoryFollowersRepository } from '../repositories/in-memory/in-memory-followers-repository'
+import { FollowerAlreadyExistsError } from './errors/followers-already-exists'
 
-let inMemoryEvaluationsRepository: InMemoryEvaluationsRepository
+let inMemoryFollowersRepository: InMemoryFollowersRepository
 let sut: UserFollowServiceUseCase
 
 describe('User follow Service Use Case', () => {
   beforeEach(() => {
-    inMemoryEvaluationsRepository = new InMemoryEvaluationsRepository()
-    sut = new UserFollowServiceUseCase(inMemoryEvaluationsRepository)
+    inMemoryFollowersRepository = new InMemoryFollowersRepository()
+    sut = new UserFollowServiceUseCase(inMemoryFollowersRepository)
   })
 
   it('should create a follow-action to a user and a service', async () => {
     expect.assertions(1)
 
-    const { evaluation } = await sut.execute({
+    const { follower } = await sut.execute({
       userId: 'user-01',
       serviceId: 'service-01',
     })
 
-    expect(evaluation.id).toBe(1)
+    expect(follower.id).toBe(1)
   })
 
   it('should return error to create a follow-action duplicated', async () => {
@@ -36,6 +36,6 @@ describe('User follow Service Use Case', () => {
         userId: 'user-01',
         serviceId: 'service-01',
       }),
-    ).rejects.toBeInstanceOf(EvaluationAlreadyExistsError)
+    ).rejects.toBeInstanceOf(FollowerAlreadyExistsError)
   })
 })

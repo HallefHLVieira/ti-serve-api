@@ -1,10 +1,10 @@
-import { PrismaEvaluationsRepository } from '@/repositories/prisma/prisma.evaluations-repository'
+import { PrismaFollowersRepository } from '@/repositories/prisma/prisma.followers-repository'
 import { UserFollowServiceUseCase } from '../user-follow-service'
 
 export function makeUserProfileUseCase() {
-  const evaluationsRepository = new PrismaEvaluationsRepository()
+  const followersRepository = new PrismaFollowersRepository()
   const auserFollowServiceUseCase = new UserFollowServiceUseCase(
-    evaluationsRepository,
+    followersRepository,
   )
   return auserFollowServiceUseCase
 }

@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "services" ALTER COLUMN "neighborhood" DROP NOT NULL,
+ALTER COLUMN "number" DROP NOT NULL,
+ALTER COLUMN "number" SET DATA TYPE TEXT,
+ALTER COLUMN "street" DROP NOT NULL;

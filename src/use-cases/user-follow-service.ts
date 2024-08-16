@@ -1,6 +1,6 @@
-import type { Evaluation } from '@prisma/client'
-import { IEvaluationsRepository } from '@/repositories/evaluations-repository'
-import { EvaluationAlreadyExistsError } from './errors/evaluations-already-exists'
+import type { Follower } from '@prisma/client'
+import { IFollowersRepository } from '@/repositories/followers-repository'
+import { FollowerAlreadyExistsError } from './errors/followers-already-exists'
 
 interface FollowUseCaseRequest {
   userId: string
@@ -8,30 +8,30 @@ interface FollowUseCaseRequest {
 }
 
 interface FollowUseCaseResponse {
-  evaluation: Evaluation
+  follower: Follower
 }
 
 export class UserFollowServiceUseCase {
-  constructor(private evaluationsRepository: IEvaluationsRepository) {}
+  constructor(private followersRepository: IFollowersRepository) {}
 
   async execute({
     userId,
     serviceId,
   }: FollowUseCaseRequest): Promise<FollowUseCaseResponse> {
-    const evaluationAlreadyExists =
-      await this.evaluationsRepository.findByServiceAndUser(userId, serviceId)
+    const followerAlreadyExists =
+      await this.followersRepository.findByServiceAndUser(userId, serviceId)
 
-    if (evaluationAlreadyExists) {
-      throw new EvaluationAlreadyExistsError()
+    if (followerAlreadyExists) {
+      throw new FollowerAlreadyExistsError()
     }
 
-    const evaluation = await this.evaluationsRepository.createOrUpdate({
+    const follower = await this.followersRepository.createOrUpdate({
       user_id: userId,
       service_id: serviceId,
     })
 
     return {
-      evaluation,
+      follower,
     }
   }
 }
