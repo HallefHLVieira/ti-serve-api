@@ -29,7 +29,7 @@ export class PrismaServicesRepository implements IServicesRepository {
       //   name: true,
       //   description: true,
       //   Phone: true,
-      //   evaluations: true,
+      //   followers: true,
       // },
     })
     return services
