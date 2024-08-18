@@ -5,18 +5,20 @@ Catalog style app
 ## Definition of Don
 To eacth functionality, the DOR includes: Repository, use-case, factory, controller and route.
 
+## Débito técnico
+[] - Atualizar todos os repositórios que criam registros, implementando o método do prisma createOrUpdate. 
 
 ## Requisitos funcionais(RFs)
 <!-- RF to Users -->
-- [x] 1 - Deve ser possível se cadastrar;
-- [x] 2 - Deve ser possível se autenticar;
+- [x] 1 - Deve ser possível se cadastrar como membro;
+- [x] 2 - Deve ser possível se autenticar como membro;
 - [x] 3 - Deve ser possível visualizar o próprio perfil;
 - [x] 4 - Deve ser possível atualizar o próprio perfil;
 - [x] 5 - Deve ser possível listar os próprios serviços;
 - [x] 6 - Deve ser possível listar os serviços ativos;
 - [x] 7 - Deve ser possível cadastrar seu próprio serviço;
 - [x] 8 - Deve ser possível buscar um serviço pelo seu id;
-- [] 9 - Deve ser possível curtir um serviço;
+- [x] 9 - Deve ser possível um usuário gostar de um serviço;
 
 <!-- feats futuras -->
 - [ ] Deve ser possível buscar um serviço pelo nome;
@@ -30,7 +32,7 @@ To eacth functionality, the DOR includes: Repository, use-case, factory, control
 
 ## Regras de negócio(RNs)
 <!-- TO RF 1 -->
-- [x] Todo novo registro de usuário, deve ser criado com um status de não verificado;
+- [x] Todo novo registro de usuário, deve ser criado com um status de não verificado ou não ativo;
 - [] Todo status de verificação só pode ser atualizado por um administrador;
 - [] Todo processo de verificação, requer preenchimento de campos de identificação/localização
   
