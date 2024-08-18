@@ -14,11 +14,11 @@ To eacth functionality, the DOR includes: Repository, use-case, factory, control
 - [x] 2 - Deve ser possível se autenticar como membro;
 - [x] 3 - Deve ser possível visualizar o próprio perfil;
 - [x] 4 - Deve ser possível atualizar o próprio perfil;
-- [x] 5 - Deve ser possível listar os próprios serviços;
-- [x] 6 - Deve ser possível listar os serviços ativos;
 - [x] 7 - Deve ser possível cadastrar seu próprio serviço;
+- [x] 5 - Deve ser possível listar os próprios serviços;
+- [x] 6 - Deve ser possível listar todos os serviços da comunidade;
 - [x] 8 - Deve ser possível buscar um serviço pelo seu id;
-- [x] 9 - Deve ser possível um usuário gostar de um serviço;
+- [x] 9 - Deve ser possível um membro gostar de um serviço;
 
 <!-- feats futuras -->
 - [ ] Deve ser possível buscar um serviço pelo nome;
@@ -31,13 +31,25 @@ To eacth functionality, the DOR includes: Repository, use-case, factory, control
 - [ ] Deve ser possível um usuário ADM inativar qualquer serviço;
 
 ## Regras de negócio(RNs)
-<!-- TO RF 1 -->
-- [x] Todo novo registro de usuário, deve ser criado com um status de não verificado ou não ativo;
-- [] Todo status de verificação só pode ser atualizado por um administrador;
-- [] Todo processo de verificação, requer preenchimento de campos de identificação/localização
-  
+<!-- PARA RF 1 -->
+- [x] Todo novo registro de usuário, deve ser criado com status de não verificado;
+- [ ] A atualização do seu status de verificado só pode ser feita por um administrador;
+- [ ] Um usuário não verificado não pode visualizar nenhum serviço da comunidade;
+- [ ] Um usuário não verificado não pode criar nenhum serviço;
+- [ ] Todo status de verificação só pode ser atualizado por um administrador;
+- [ ] Todo processo de verificação, requer preenchimento de campos de identificação/localização
 - [x] O usuário não pode ter o mesmo número de celular de outra pessoa;
-- [x] Todo usuário criado recebe o status de não verificado;
+  
+  <!-- PARA RF 02-->
+  <!-- PARA RF 03-->
+  <!-- PARA RF 04-->
+  <!-- PARA RF 05-->
+  <!-- PARA RF 06-->
+  <!-- PARA RF 07-->
+  <!-- PARA RF 08-->
+  <!-- PARA RF 09-->
+  <!-- PARA RF 10-->
+
 - [x] Todas as ações chamadas pelo user devem ser authenticadas com o token jwt
 - [ ] Apenas usuários ADM's pode verificar os usuários recém criados;
 - [ ] Usuário não pode visualizar nada sem estar logado;
