@@ -1,7 +1,7 @@
 {
   "name": "catalog-api",
   "version": "1.0.0",
-  "description": "Catalog style app",
+  "description": "This application is an online catalog of services available in one or more communities.",
   "main": "index.js",
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
