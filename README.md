@@ -11,19 +11,21 @@ git clone git@github.com:HallefHLVieira/catalog-api.git
 ```zsh
 npm install
 ```
-4. Run docker-composer to up docker-container with Postgres database:
+4. Create a env file with your dev values, see the env.example file and docker-compose.yml
+
+5. Run docker-composer to up docker-container with Postgres database:
 ```bash
 docker-composer up -d
 ```  
-5. Install database migrations:
+6. Install database migrations:
 ```bash
 npx prisma migrate dev
 ```
-6. Install database seeders:
+7. Install database seeders:
 ```bash
 npx prisma db seed
 ```
-7. Run app with:
+8. Run app with:
 ```bash
 npm run start:dev
 ```
