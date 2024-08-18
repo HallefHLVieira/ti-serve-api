@@ -43,7 +43,7 @@ export class PrismaFollowersRepository implements IFollowersRepository {
   async findByServiceAndUser(
     userId: string,
     serviceId: string,
-  ): Promise<Follower> {
+  ): Promise<Follower | null> {
     const follower = await prisma.follower.findFirst({
       where: {
         service_id: serviceId,
@@ -52,8 +52,8 @@ export class PrismaFollowersRepository implements IFollowersRepository {
       },
     })
 
-    if (!follower) {
-      throw new FollowersNotFoundError()
+    if (follower === null) {
+      return null
     }
     return follower
   }

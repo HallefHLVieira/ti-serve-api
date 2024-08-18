@@ -21,13 +21,14 @@ export class UserFollowServiceUseCase {
     const followerAlreadyExists =
       await this.followersRepository.findByServiceAndUser(userId, serviceId)
 
-    if (followerAlreadyExists) {
+    if (followerAlreadyExists && followerAlreadyExists.liked === true) {
       throw new FollowerAlreadyExistsError()
     }
 
     const follower = await this.followersRepository.createOrUpdate({
       user_id: userId,
       service_id: serviceId,
+      liked: true,
     })
 
     return {

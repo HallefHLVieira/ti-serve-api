@@ -11,7 +11,7 @@ export async function createServiceController(
     name: z.string(),
     description: z.string().max(250),
     street: z.string(),
-    number: z.number(),
+    number: z.string(),
   })
 
   const { name, description, number, street } = serviceBodySchema.parse(

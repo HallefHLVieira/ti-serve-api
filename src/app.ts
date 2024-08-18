@@ -5,6 +5,7 @@ import { env } from './env'
 import fastifyJwt from '@fastify/jwt'
 import fastifyCookie from '@fastify/cookie'
 import { servicesRoutes } from './http/controllers/services/routes'
+import { followersRoutes } from './http/controllers/follwers/routes'
 
 export const app = fastify()
 
@@ -25,6 +26,7 @@ app.register(
   async (app) => {
     app.register(usersRoutes)
     app.register(servicesRoutes)
+    app.register(followersRoutes)
   },
   { prefix: '/catalog-api' },
 )

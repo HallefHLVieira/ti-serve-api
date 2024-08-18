@@ -6,7 +6,7 @@ interface ServiceUseCaseRequest {
   userId: string
   name: string
   street: string
-  number: number
+  number: string
   description: string
 }
 
