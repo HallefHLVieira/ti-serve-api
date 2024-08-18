@@ -1,7 +1,7 @@
 # Catalog-api
 This application is an online catalog of services available in one or more communities;
 
-## Install and run app in localhost
+## Installing the app
 1. Clone the project and install dependencies:
 ```bash
 git clone git@github.com:catho/job-search.git
@@ -24,9 +24,29 @@ npx prisma migrate dev
 ```bash
 npx prisma db seed
 ```
-6. Run app with:
+
+### Start the aplication in local environment with NPM
+
+* You must to have nodemon installed in global node_module
 ```bash
 npm run start:dev
+```
+
+* Now just access: http://localhost:3000
+
+### Tests
+
+Run all tests once
+```zsh
+npm run test
+```
+Run only unit tests
+```bash
+npm test:unit
+```
+Run tests and generate the code coverage
+```bash
+npm run test:coverage
 ```
 
 ## Definitions of Read(ROR)
