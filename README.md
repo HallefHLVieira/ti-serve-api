@@ -2,30 +2,29 @@
 This application is an online catalog of services available in one or more communities;
 
 ## Install and run app in localhost
-1. Clone the project with the command:
-```zsh
-git clone git@github.com:HallefHLVieira/catalog-api.git
-```
-2. Enter in folder catalog-api.
-3. install the app with:
-```zsh
+1. Clone the project and install dependencies:
+```bash
+git clone git@github.com:catho/job-search.git
+cd job-search
 npm install
 ```
-4. Create a env file with your dev values, see the env.example file and docker-compose.yml
-
-5. Run docker-composer to up docker-container with Postgres database:
+2. Create `.env` file based on `.env.example` and fill empty required parameters based on docker-compose.yml and env-example
+```bash
+cp .env.example .env
+```
+3. Run docker-composer to up docker-container with Postgres database:
 ```bash
 docker-composer up -d
 ```  
-6. Install database migrations:
+4. Install database migrations:
 ```bash
 npx prisma migrate dev
 ```
-7. Install database seeders:
+5. Install database seeders:
 ```bash
 npx prisma db seed
 ```
-8. Run app with:
+6. Run app with:
 ```bash
 npm run start:dev
 ```
