@@ -1,9 +1,46 @@
 # Catalog-api
+This application is an online catalog of services available in one or more communities;
 
-Catalog style app
+## Install and run app in localhost
+1. Clone the project with the command:
+```zsh
+git clone git@github.com:HallefHLVieira/catalog-api.git
+```
+2. Enter in folder catalog-api.
+3. install the app with:
+```zsh
+npm install
+```
+4. Run docker-composer to up docker-container with Postgres database:
+```bash
+docker-composer up -d
+```  
+5. Install database migrations:
+```bash
+npx prisma migrate dev
+```
+6. Install database seeders:
+```bash
+npx prisma db seed
+```
+7. Run app with:
+```bash
+npm run start:dev
+```
 
-## Definition of Don
-To eacth functionality, the DOR includes: Repository, use-case, factory, controller and route.
+## Definitions of Read(ROR)
+To eacth functionality, the tasks should inclues:
+- Functional requirements ✔️
+- Business roles ✔️
+- Non-functional requirements ✔️
+
+## Definitions of done(DOD)
+To eacth functionality, the tasks should includes: 
+- Repository-method ✔️
+- use-case ✔️
+- factory ✔️
+- controller ✔️
+- route ✔️
 
 ## Débito técnico
 [] - Atualizar todos os repositórios que criam registros, implementando o método do prisma createOrUpdate. 
@@ -19,9 +56,13 @@ To eacth functionality, the DOR includes: Repository, use-case, factory, control
 - [x] 6 - Deve ser possível listar todos os serviços da comunidade;
 - [x] 8 - Deve ser possível buscar um serviço pelo seu id;
 - [x] 9 - Deve ser possível um membro gostar de um serviço;
-
+- [ ] 10 - Deve ser possível um membro desgostar de um serviço;
+- [ ] 11 - Deve ser possível um membro desativar sua conta;
+  
 <!-- feats futuras -->
 - [ ] Deve ser possível buscar um serviço pelo nome;
+- [ ] Incluir foto para usuário
+- [ ] Incluir foto/banner para o serviço
 
 <!-- Tudo que um usuário ADM pode fazer -->
 - [ ] Deve ser possível visualizar todos os membros que precisam ser verificados;
