@@ -32,7 +32,7 @@ export class InMemoryFollowersRepository implements IFollowersRepository {
   async findByServiceAndUser(
     userId: string,
     serviceId: string,
-  ): Promise<Follower> {
+  ): Promise<Follower | null> {
     const followersIndex = this.followersTable.findIndex(
       (item) =>
         item.service_id === serviceId &&
@@ -40,7 +40,7 @@ export class InMemoryFollowersRepository implements IFollowersRepository {
         item.deleted_at === null,
     )
     if (followersIndex < 0) {
-      throw new FollowersNotFoundError()
+      return null
     }
     return this.followersTable[followersIndex]
   }

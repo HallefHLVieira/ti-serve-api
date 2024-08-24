@@ -79,6 +79,7 @@ To eacth functionality, the tasks should includes:
 - [x] 9 - Deve ser possível um membro gostar de um serviço;
 - [ ] 10 - Deve ser possível um membro desgostar de um serviço;
 - [ ] 11 - Deve ser possível um membro desativar sua conta;
+- [ ] 12 - Deve ser possível um membro adicionar uma foto de perfil;
   
 <!-- feats futuras -->
 - [ ] Deve ser possível buscar um serviço pelo nome;
