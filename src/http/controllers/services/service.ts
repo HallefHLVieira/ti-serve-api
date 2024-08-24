@@ -12,11 +12,11 @@ export async function createServiceController(
     description: z.string().max(250),
     street: z.string(),
     number: z.string(),
+    locationId: z.number(),
   })
 
-  const { name, description, number, street } = serviceBodySchema.parse(
-    request.body,
-  )
+  const { name, description, number, street, locationId } =
+    serviceBodySchema.parse(request.body)
 
   try {
     const createServiceUseCase = makeCreateServiceUseCase()
@@ -27,6 +27,7 @@ export async function createServiceController(
       street,
       number,
       userId: request.user.sub,
+      locationId,
     })
   } catch (err) {
     if (err instanceof ServiceAlreadyExistsError) {

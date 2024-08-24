@@ -8,6 +8,7 @@ interface ServiceUseCaseRequest {
   street: string
   number: string
   description: string
+  locationId: number
 }
 
 interface ServiceUseCaseResponse {
@@ -23,6 +24,7 @@ export class ServiceUseCase {
     street,
     number,
     description,
+    locationId,
   }: ServiceUseCaseRequest): Promise<ServiceUseCaseResponse> {
     const serviceAlreadyExists = await this.servicesRepository.findByname(name)
 
@@ -36,6 +38,7 @@ export class ServiceUseCase {
       description,
       street,
       number,
+      location_id: locationId,
     })
 
     return {

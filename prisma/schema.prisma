@@ -39,19 +39,18 @@ model User {
 }
 
 model Service {
-  id           String    @id @default(uuid())
-  name         String    @unique
-  description  String
-  is_valid     Boolean   @default(false)
-  street       String?
-  number       String?
-  neighborhood String?   @default("Benderville")
-  zip_code     String?
-  latitude     Decimal?
-  longitude    Decimal?
-  created_at   DateTime  @default(now())
-  updated_at   DateTime  @updatedAt
-  deleted_at   DateTime?
+  id          String    @id @default(uuid())
+  name        String    @unique
+  description String
+  is_valid    Boolean   @default(false)
+  street      String?
+  number      String?
+  zip_code    String?
+  latitude    Decimal?
+  longitude   Decimal?
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  deleted_at  DateTime?
 
   user        User     @relation(fields: [user_id], references: [id])
   user_id     String //one service has a vincule with an user

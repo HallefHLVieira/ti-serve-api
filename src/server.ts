@@ -8,4 +8,7 @@ app
   })
   .then(() => {
     console.log('HTTP Server is running 🚀️')
+    if (env.NODE_ENV === 'dev') {
+      console.log(`http://localhost:${env.PORT}`)
+    }
   })

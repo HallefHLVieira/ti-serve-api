@@ -11,9 +11,12 @@ export async function registerController(
     name: z.string(),
     password: z.string().min(6),
     phone: z.string().min(11),
+    locationId: z.number(),
   })
 
-  const { name, password, phone } = registerBodySchema.parse(request.body)
+  const { name, password, phone, locationId } = registerBodySchema.parse(
+    request.body,
+  )
 
   try {
     const registerUseCase = makeRegisterUseCase()
@@ -22,6 +25,7 @@ export async function registerController(
       name,
       password,
       phone,
+      locationId,
     })
   } catch (err) {
     if (err instanceof UserAlreeadyExistsError) {

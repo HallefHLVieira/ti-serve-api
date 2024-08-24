@@ -7,6 +7,7 @@ interface RegisterUseCaseRequest {
   name: string
   password: string
   phone: string
+  locationId: number
 }
 
 interface RegisterUseCaseResponse {
@@ -20,6 +21,7 @@ export class RegisterUseCase {
     name,
     password,
     phone,
+    locationId,
   }: RegisterUseCaseRequest): Promise<RegisterUseCaseResponse> {
     const passwordHash = await hash(password, 5)
 
@@ -33,6 +35,7 @@ export class RegisterUseCase {
       name,
       password_hash: passwordHash,
       phone,
+      location_id: locationId,
     })
 
     return {

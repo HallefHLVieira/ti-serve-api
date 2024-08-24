@@ -13,9 +13,9 @@ export async function usersRoutes(app: FastifyInstance) {
   app.patch('/v1/token/refresh', refreshController)
 
   /** AUTHENTICATED ROUTES */
-  app.get('/me', { onRequest: [verifyJWT] }, profileController)
+  app.get('/v1/me', { onRequest: [verifyJWT] }, profileController)
   app.patch(
-    '/users/profile/update',
+    '/v1/users/profile/update',
     { onRequest: [verifyJWT] },
     updateProfileController,
   )
