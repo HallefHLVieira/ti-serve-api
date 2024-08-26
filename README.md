@@ -66,7 +66,7 @@ To eacth functionality, the tasks should includes:
 ## Débito técnico
 [] - Atualizar todos os repositórios que criam registros, implementando o método do prisma createOrUpdate. 
 
-## Requisitos funcionais(RFs)
+### Requisitos funcionais(RFs)
 <!-- RF to Users -->
 - [x] 1 - Deve ser possível se cadastrar como membro;
 - [x] 2 - Deve ser possível se autenticar como membro;
@@ -93,7 +93,7 @@ To eacth functionality, the tasks should includes:
 - [ ] Deve ser possível aprovar a ativação de um serviço;
 - [ ] Deve ser possível um usuário ADM inativar qualquer serviço;
 
-## Regras de negócio(RNs)
+### Regras de negócio(RNs)
 <!-- PARA RF 1 -->
 - [x] Todo novo registro de usuário, deve ser criado com status de não verificado;
 - [ ] A atualização do seu status de verificado só pode ser feita por um administrador;
@@ -121,17 +121,28 @@ To eacth functionality, the tasks should includes:
 - [ ] Criação de serviços só pode ser aprovado por adms;
 - [ ] Usuário não pode curtir um serviço mais de uma vez;
 
-## Requisitos não funcionais(RFNs)
+### Requisitos não funcionais(RFNs)
 <!-- não parte do cliente -->
 - [x] Senhas dos users precisam ter no mínimo 6 caracteres;
 - [x] Senhas dos users precisam estar criptografadas;
 - [x] Os dados da aplicação precisam persistir em um banco PostgreSQL;
 - [x] O user deve ser ideentificado por meio de um JWT;
 
-## To developer
+### To developer
 - VS-code min version: 1.89
+
+### Tests E2E
+- [x] register
+- [x] authenticate
+- [ ] show profile
+- [ ] create service
+- [ ] list services
+- [ ] list self services
+- [ ] edit profile
+- [ ] follow service
+- [ ] unfollow service
 
 ## Patterns utilizados
 - Repository
 - Factory
-- Sut
+- Sutl
