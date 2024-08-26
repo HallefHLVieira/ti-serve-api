@@ -1,8 +1,8 @@
 import { expect, describe, it, beforeEach } from 'vitest'
-import { UserUnFollowServiceUseCase } from './user-unfollow-service'
-import { InMemoryFollowersRepository } from '../repositories/in-memory/in-memory-followers-repository'
-import { UserFollowServiceUseCase } from './user-follow-service'
-import { FollowerNotExistsError } from './errors/followers-not-exists'
+import { UserUnFollowServiceUseCase } from '../../use-cases/user-unfollow-service'
+import { InMemoryFollowersRepository } from '../../repositories/in-memory/in-memory-followers-repository'
+import { UserFollowServiceUseCase } from '../../use-cases/user-follow-service'
+import { FollowerNotExistsError } from '../../use-cases/errors/followers-not-exists'
 
 let inMemoryFollowersRepository: InMemoryFollowersRepository
 let sutUnfollow: UserUnFollowServiceUseCase

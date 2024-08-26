@@ -1,8 +1,8 @@
 import { expect, describe, it, beforeEach } from 'vitest'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
-import { AuthenticateUseCase } from './authenticate'
+import { AuthenticateUseCase } from '../../use-cases/authenticate'
 import { hash } from 'bcryptjs'
-import { InvalidCredentialsError } from './errors/invalid-credentials-error'
+import { InvalidCredentialsError } from '../../use-cases/errors/invalid-credentials-error'
 
 // sut = system under test ou variável principal que está sendo testada
 
@@ -22,6 +22,7 @@ describe('Authenticate Use Case', () => {
       name: 'John Doe',
       phone: '99999999999',
       password_hash: await hash('123456', 5),
+      location_id: 1,
     })
 
     const { user } = await sut.execute({
@@ -50,6 +51,7 @@ describe('Authenticate Use Case', () => {
       name: 'John Doe',
       phone: '99999999999',
       password_hash: await hash('123456', 5),
+      location_id: 1,
     })
 
     expect(() =>

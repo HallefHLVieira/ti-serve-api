@@ -1,8 +1,8 @@
 import { expect, describe, it, beforeEach } from 'vitest'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
-import { GetUserProfileUseCase } from './get-user-profile'
+import { GetUserProfileUseCase } from '../../use-cases/get-user-profile'
 import { hash } from 'bcryptjs'
-import { ResourceNotFoundError } from './errors/resource-not-found-error'
+import { ResourceNotFoundError } from '../../use-cases/errors/resource-not-found-error'
 
 // sut = system under test ou variável principal que está sendo testada
 
@@ -22,6 +22,7 @@ describe('Get User Profile Use Case', () => {
       name: 'John Doe',
       phone: '99999999999',
       password_hash: await hash('123456', 5),
+      location_id: 1,
     })
 
     const { user } = await sut.execute({

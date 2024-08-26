@@ -1,7 +1,7 @@
 import { expect, describe, it, beforeEach } from 'vitest'
-import { ServiceUseCase } from './service'
+import { ServiceUseCase } from '../../use-cases/service'
 import { InMemoryServicesRepository } from '@/repositories/in-memory/in-memory-services-repository'
-import { GetServiceByIdUseCase } from './get-service-by-id'
+import { GetServiceByIdUseCase } from '../../use-cases/get-service-by-id'
 
 let servicesRepository: InMemoryServicesRepository
 let sut: ServiceUseCase
@@ -24,7 +24,8 @@ describe('Get Services by Name Use Case', () => {
       name: serviceName,
       description: 'Loja de quadros decorativos.',
       street: 'Avenida Juarez Bender',
-      number: 163,
+      number: '163',
+      locationId: 1,
     })
 
     const { service } = await serviceSut.execute({
@@ -44,7 +45,8 @@ describe('Get Services by Name Use Case', () => {
       name: serviceName,
       description: 'Loja de quadros decorativos.',
       street: 'Avenida Juarez Bender',
-      number: 163,
+      number: '163',
+      locationId: 1,
     })
 
     const { service } = await serviceSut.execute({

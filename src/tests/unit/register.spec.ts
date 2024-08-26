@@ -1,8 +1,8 @@
 import { expect, describe, it, beforeEach } from 'vitest'
-import { RegisterUseCase } from './register'
+import { RegisterUseCase } from '../../use-cases/register'
 import { compare } from 'bcryptjs'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
-import { UserAlreeadyExistsError } from './errors/user-already-exists'
+import { UserAlreeadyExistsError } from '../../use-cases/errors/user-already-exists'
 
 // ATENTION
 // sut = system under test ou variável principal que está sendo testada
@@ -23,6 +23,7 @@ describe('Register Use Case', () => {
       name: 'John Doe',
       phone: '99999999999',
       password: '123456',
+      locationId: 1,
     })
 
     const isPasswordCorrectlyHashed = await compare(
@@ -42,6 +43,7 @@ describe('Register Use Case', () => {
       name: 'John Doe',
       phone,
       password: '123456',
+      locationId: 1,
     })
 
     await expect(() =>
@@ -49,6 +51,7 @@ describe('Register Use Case', () => {
         name: 'John Doe',
         phone,
         password: '123456',
+        locationId: 1,
       }),
     ).rejects.toBeInstanceOf(UserAlreeadyExistsError)
   })
@@ -60,6 +63,7 @@ describe('Register Use Case', () => {
       name: 'John Doe',
       phone: '99999999999',
       password: '123456',
+      locationId: 1,
     })
 
     expect(user.id).toEqual(expect.any(String))

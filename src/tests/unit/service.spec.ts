@@ -1,7 +1,7 @@
 import { expect, describe, it, beforeEach } from 'vitest'
-import { ServiceUseCase } from './service'
+import { ServiceUseCase } from '../../use-cases/service'
 import { InMemoryServicesRepository } from '@/repositories/in-memory/in-memory-services-repository'
-import { ServiceAlreadyExistsError } from './errors/service-already-exists'
+import { ServiceAlreadyExistsError } from '../../use-cases/errors/service-already-exists'
 
 let servicesRepository: InMemoryServicesRepository
 let sut: ServiceUseCase
@@ -20,7 +20,8 @@ describe('Service Use Case', () => {
       name: 'Geek Frames',
       description: 'Loja de quadros decorativos.',
       street: 'Avenida Juarez Bender',
-      number: 163,
+      number: '163',
+      locationId: 1,
     })
 
     expect(service.id).toEqual(expect.any(String))
@@ -35,7 +36,8 @@ describe('Service Use Case', () => {
       name: serviceName,
       description: 'Loja de quadros decorativos.',
       street: 'Avenida Juarez Bender',
-      number: 163,
+      number: '163',
+      locationId: 1,
     })
 
     await expect(() =>
@@ -44,7 +46,8 @@ describe('Service Use Case', () => {
         name: serviceName,
         description: 'Loja de quadros decorativos.',
         street: 'Avenida Juarez Bender',
-        number: 163,
+        number: '163',
+        locationId: 1,
       }),
     ).rejects.toBeInstanceOf(ServiceAlreadyExistsError)
   })

@@ -1,30 +1,29 @@
 import { expect, describe, it, beforeEach } from 'vitest'
-import { ServiceUseCase } from './service'
+import { ServiceUseCase } from '../../use-cases/service'
+import { FetchServiceUseCase } from '../../use-cases/fetch-services'
 import { InMemoryServicesRepository } from '@/repositories/in-memory/in-memory-services-repository'
-import { FetchServicesByUserUseCase } from './fetch-services-by-user'
 
 let servicesRepository: InMemoryServicesRepository
 let sut: ServiceUseCase
-let listSut: FetchServicesByUserUseCase
+let listSut: FetchServiceUseCase
 
-describe('Fetch Services by User Use Case', () => {
+describe('Service Use Case', () => {
   beforeEach(() => {
     servicesRepository = new InMemoryServicesRepository()
     sut = new ServiceUseCase(servicesRepository)
-    listSut = new FetchServicesByUserUseCase(servicesRepository)
+    listSut = new FetchServiceUseCase(servicesRepository)
   })
 
-  it('should be return a list with one service by user', async () => {
+  it('should be able see a empty list with active services', async () => {
     expect.assertions(1)
 
-    const userId = 'user-01'
-
     await sut.execute({
-      userId,
+      userId: 'user-01',
       name: 'Geek-frames',
       description: 'Loja de quadros decorativos.',
       street: 'Avenida Juarez Bender',
-      number: 163,
+      number: '163',
+      locationId: 1,
     })
 
     await sut.execute({
@@ -32,11 +31,12 @@ describe('Fetch Services by User Use Case', () => {
       name: 'Mercadinho da Carol',
       description: 'Vende de tudo.',
       street: 'Avenida Juarez Bender',
-      number: 155,
+      number: '155',
+      locationId: 1,
     })
 
-    const servicesList = await listSut.execute({ userId })
+    const servicesList = await listSut.execute()
 
-    expect(servicesList.services.length).toEqual(1)
+    expect(servicesList).toEqual({ services: [] })
   })
 })

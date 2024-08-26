@@ -12,14 +12,15 @@ export class InMemoryServicesRepository implements IServicesRepository {
     return serviceAlreadyExists ?? null
   }
 
-  async create(data: Prisma.ServiceUncheckedCreateInput) {
+  async create(data: Prisma.ServiceUncheckedCreateInput): Promise<Service> {
     const service = {
       id: randomUUID(),
       name: data.name,
       description: data.description,
       is_valid: false,
-      street: data.street,
-      number: data.number,
+      location_id: data.location_id,
+      street: data.street ?? '',
+      number: data.number ?? null,
       neighborhood: 'Benderville',
       zip_code: null,
       user_id: data.user_id,

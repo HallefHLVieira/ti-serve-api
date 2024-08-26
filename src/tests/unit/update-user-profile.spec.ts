@@ -1,9 +1,9 @@
 import { expect, describe, it, beforeEach } from 'vitest'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
 import { hash } from 'bcryptjs'
-import { UpdateUserProfileUseCase } from './update-user-profile'
-import { UserNotFoundOrInvalidError } from './errors/user-not-found-or-invalid-error'
-import { InvalidPhoneToUpdateError } from './errors/invalid-phone-to-update-error'
+import { UpdateUserProfileUseCase } from '../../use-cases/update-user-profile'
+import { UserNotFoundOrInvalidError } from '../../use-cases/errors/user-not-found-or-invalid-error'
+import { InvalidPhoneToUpdateError } from '../../use-cases/errors/invalid-phone-to-update-error'
 
 // sut = system under test ou variável principal que está sendo testada
 
@@ -23,6 +23,7 @@ describe('Update an user-profile Use Case', () => {
       name: 'John Doe',
       phone: '99999999999',
       password_hash: await hash('123456', 5),
+      location_id: 1,
     })
 
     const { user } = await sut.execute({
@@ -45,12 +46,14 @@ describe('Update an user-profile Use Case', () => {
       name: 'John Doe',
       phone: '99999999999',
       password_hash: await hash('123456', 5),
+      location_id: 1,
     })
 
     await inMemoryUsersRepository.create({
       name: 'John Does',
       phone: '88888888888',
       password_hash: await hash('123456', 5),
+      location_id: 1,
     })
 
     expect(() =>
@@ -71,6 +74,7 @@ describe('Update an user-profile Use Case', () => {
       name: 'John Doe',
       phone: '99999999999',
       password_hash: await hash('123456', 5),
+      location_id: 1,
     })
 
     expect(() =>
