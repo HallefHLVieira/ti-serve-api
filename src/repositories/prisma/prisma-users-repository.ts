@@ -11,7 +11,6 @@ export class PrismaUsersRepository implements IUsersRepository {
         id: userId,
       },
     })
-
     return user
   }
 
