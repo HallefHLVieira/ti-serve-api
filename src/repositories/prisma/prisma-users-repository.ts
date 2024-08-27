@@ -24,7 +24,7 @@ export class PrismaUsersRepository implements IUsersRepository {
     return user
   }
 
-  async create(data: Prisma.UserCreateInput) {
+  async create(data: Prisma.UserUncheckedCreateInput): Promise<User> {
     const user = await prisma.user.create({
       data,
     })
@@ -34,7 +34,7 @@ export class PrismaUsersRepository implements IUsersRepository {
 
   async updateProfile(
     userId: string,
-    data: Prisma.UserUpdateInput,
+    data: Prisma.UserUncheckedUpdateInput,
   ): Promise<User | null> {
     const userWithSamePhone = await prisma.user.findUnique({
       where: {
