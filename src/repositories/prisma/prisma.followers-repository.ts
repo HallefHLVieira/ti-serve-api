@@ -22,7 +22,21 @@ export class PrismaFollowersRepository implements IFollowersRepository {
     }
 
     if (follower.liked === false) {
-      follower.liked = true
+      follower.liked = !follower.liked
+      follower.updated_at = new Date()
+
+      await prisma.follower.update({
+        where: {
+          id: follower.id,
+        },
+        data: {
+          ...follower,
+        },
+      })
+
+      return follower
+    } else {
+      follower.liked = !follower.liked
       follower.updated_at = new Date()
 
       await prisma.follower.update({
@@ -36,8 +50,6 @@ export class PrismaFollowersRepository implements IFollowersRepository {
 
       return follower
     }
-
-    throw new Error('Invalid data!')
   }
 
   async findByServiceAndUser(

@@ -44,7 +44,6 @@ export class InMemoryUsersRepository implements IUsersRepository {
     userId: string,
     data: Prisma.UserUpdateInput,
   ): Promise<User | null> {
-    console.log('user id in repository: ', userId)
     const checkIfUserPhoneAlreadyExists = this.usersTable.find(
       (item) => item.phone === data.phone,
     )
@@ -53,7 +52,6 @@ export class InMemoryUsersRepository implements IUsersRepository {
       throw new InvalidPhoneToUpdateError()
     }
     const userIndex = this.usersTable.findIndex((item) => item.id === userId)
-    console.log('userIndex: ', userIndex)
 
     if (!(userIndex >= 0)) {
       throw new UserNotFoundOrInvalidError()

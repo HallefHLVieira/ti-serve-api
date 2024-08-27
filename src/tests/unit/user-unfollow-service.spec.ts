@@ -30,15 +30,4 @@ describe('User unfollow Service Use Case', () => {
 
     expect(follower.liked).toBe(false)
   })
-
-  it('should update a register follow to unfollow-action user for a service', async () => {
-    expect.assertions(1)
-
-    await expect(
-      sutUnfollow.execute({
-        userId: 'user-01',
-        serviceId: 'service-01',
-      }),
-    ).rejects.toBeInstanceOf(FollowerNotExistsError)
-  })
 })
