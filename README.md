@@ -68,30 +68,30 @@ To eacth functionality, the tasks should includes:
 
 ### Requisitos funcionais(RFs)
 <!-- RF to Users -->
-- [x] 1 - Deve ser possível se cadastrar como membro;
-- [x] 2 - Deve ser possível se autenticar como membro;
-- [x] 3 - Deve ser possível visualizar o próprio perfil;
-- [x] 4 - Deve ser possível atualizar o próprio perfil;
-- [x] 7 - Deve ser possível cadastrar seu próprio serviço;
-- [x] 5 - Deve ser possível listar os próprios serviços;
-- [x] 6 - Deve ser possível listar todos os serviços da comunidade;
-- [x] 8 - Deve ser possível buscar um serviço pelo seu id;
-- [x] 9 - Deve ser possível um membro gostar de um serviço;
-- [ ] 10 - Deve ser possível um membro desgostar de um serviço;
-- [ ] 11 - Deve ser possível um membro desativar sua conta;
-- [ ] 12 - Deve ser possível um membro adicionar uma foto de perfil;
+- [x] 1 - Deve ser possível se cadastrar como membro; --------------------- MVP
+- [x] 2 - Deve ser possível se autenticar como membro; -------------------- MVP
+- [x] 3 - Deve ser possível visualizar o próprio perfil; 
+- [x] 4 - Deve ser possível atualizar o próprio perfil; 
+- [x] 7 - Deve ser possível cadastrar seu próprio serviço; ---------------- MVP
+- [x] 5 - Deve ser possível listar os próprios serviços; ------------------ MVP
+- [x] 6 - Deve ser possível listar todos os serviços da comunidade; ------- MVP
+- [x] 8 - Deve ser possível buscar um serviço pelo seu id; ---------------- MVP
+- [x] 9 - Deve ser possível um membro gostar de um serviço; MVP(FIFERENCIAL DO NEGÓCIO)
+- [x] 10 - Deve ser possível um membro desgostar de um serviço; ----------- MVP
+- [ ] 11 - Deve ser possível um membro desativar sua conta; 
+- [ ] 12 - Deve ser possível um membro adicionar uma foto de perfil; 
   
 <!-- feats futuras -->
 - [ ] Deve ser possível buscar um serviço pelo nome;
 - [ ] Incluir foto para usuário
-- [ ] Incluir foto/banner para o serviço
+- [ ] Incluir foto/banner para o serviço ----- MVP
 
 <!-- Tudo que um usuário ADM pode fazer -->
-- [ ] Deve ser possível visualizar todos os membros que precisam ser verificados;
-- [ ] Deve ser possível verificar um usuário;
-- [ ] Deve ser possível visualizar os serviços que aguardam validação;
-- [ ] Deve ser possível aprovar a ativação de um serviço;
-- [ ] Deve ser possível um usuário ADM inativar qualquer serviço;
+- [ ] Deve ser possível visualizar todos os membros que precisam ser verificados; ON DB
+- [ ] Deve ser possível verificar um usuário; ON DB
+- [ ] Deve ser possível visualizar os serviços que aguardam validação; ON DB
+- [ ] Deve ser possível aprovar a ativação de um serviço; ON DB
+- [ ] Deve ser possível um usuário ADM inativar qualquer serviço; ON DB
 
 ### Regras de negócio(RNs)
 <!-- PARA RF 1 -->
