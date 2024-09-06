@@ -25,7 +25,7 @@ jobs:
           node-version: 18
           cache: 'npm'
 
-      - run: cpm ci
+      - run: npm ci
 
       - run: npm run test:e2e
         env:
