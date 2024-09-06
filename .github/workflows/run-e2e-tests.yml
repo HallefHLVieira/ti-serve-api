@@ -13,9 +13,9 @@ jobs:
         ports:
           - 5432:5432
         env:
-          - POSTGRESQL_USERNAME=docker
-          - POSTGRESQL_PASSWORD=docker123
-          - POSTGRESQL_DATABASE=apicatalog
+          POSTGRESQL_USERNAME: docker
+          POSTGRESQL_PASSWORD: docker123
+          POSTGRESQL_DATABASE: apicatalog
 
     steps:
       - uses: actions/checkout@v3
