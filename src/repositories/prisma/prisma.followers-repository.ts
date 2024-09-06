@@ -70,6 +70,20 @@ export class PrismaFollowersRepository implements IFollowersRepository {
     return follower
   }
 
+  async findByService(serviceId: string): Promise<Follower[] | []> {
+    const followers = await prisma.follower.findMany({
+      where: {
+        service_id: serviceId,
+        liked: true,
+      },
+    })
+
+    if (followers === null) {
+      return []
+    }
+    return followers
+  }
+
   async delete(userId: string, serviceId: string): Promise<void> {
     const follower = await prisma.follower.findFirst({
       where: {

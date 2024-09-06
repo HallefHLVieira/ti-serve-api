@@ -7,4 +7,5 @@ export interface IFollowersRepository {
     serviceId: string,
   ): Promise<Follower | null>
   delete(userId: string, serviceId: string, liked: boolean): Promise<void>
+  findByService(serviceId: string): Promise<Follower[] | []>
 }

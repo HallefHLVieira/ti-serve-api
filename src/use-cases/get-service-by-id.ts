@@ -1,4 +1,4 @@
-import type { Service } from '@prisma/client'
+import { Service } from '@prisma/client'
 import { IServicesRepository } from '@/repositories/services-repository'
 
 interface FetchServiceByIdRequest {
