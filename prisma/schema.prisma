@@ -80,12 +80,12 @@ model Follower {
 }
 
 model Phone {
-  id          Int      @id
-  number      String   @unique
-  is_whatsapp Boolean  @default(false)
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
-  deleted_at  DateTime
+  id          Int       @id @default(autoincrement())
+  number      String    @unique
+  is_whatsapp Boolean   @default(false)
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  deleted_at  DateTime?
 
   service    Service @relation(fields: [service_id], references: [id])
   service_id String //one phone is vinculed to one service
