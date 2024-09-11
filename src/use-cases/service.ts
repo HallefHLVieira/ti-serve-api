@@ -1,7 +1,12 @@
-import type { Service } from '@prisma/client'
+import type { Phone, Service } from '@prisma/client'
 import { IServicesRepository } from '@/repositories/services-repository'
 import { ServiceAlreadyExistsError } from './errors/service-already-exists'
+import { IPhonesRepository } from '@/repositories/phones-repository'
 
+interface Phones {
+  number: string
+  isWhatsapp: boolean
+}
 interface ServiceUseCaseRequest {
   userId: string
   name: string
@@ -9,14 +14,19 @@ interface ServiceUseCaseRequest {
   number: string
   description: string
   locationId: number
+  phones?: Phones[]
 }
 
 interface ServiceUseCaseResponse {
   service: Service
+  phonesSaved: Phone[] | undefined
 }
 
 export class ServiceUseCase {
-  constructor(private servicesRepository: IServicesRepository) {}
+  constructor(
+    private servicesRepository: IServicesRepository,
+    private phonesRepository: IPhonesRepository,
+  ) {}
 
   async execute({
     userId,
@@ -25,8 +35,10 @@ export class ServiceUseCase {
     number,
     description,
     locationId,
+    phones,
   }: ServiceUseCaseRequest): Promise<ServiceUseCaseResponse> {
     const serviceAlreadyExists = await this.servicesRepository.findByname(name)
+    const phonesSaved: Phone[] = []
 
     if (serviceAlreadyExists) {
       throw new ServiceAlreadyExistsError()
@@ -40,9 +52,32 @@ export class ServiceUseCase {
       number,
       location_id: locationId,
     })
+    if (service && phones?.length) {
+      await Promise.all(
+        phones.map(async (phone) => {
+          const phoneSaved = await this.phonesRepository.create({
+            number: phone.number,
+            is_whatsapp: phone.isWhatsapp,
+            service_id: service.id,
+          })
+
+          if (phoneSaved) {
+            phonesSaved.push(phoneSaved)
+          }
+        }),
+      )
+    }
+
+    if (phonesSaved.length > 0) {
+      return {
+        service,
+        phonesSaved,
+      }
+    }
 
     return {
       service,
+      phonesSaved: undefined,
     }
   }
 }

@@ -58,7 +58,7 @@ model Service {
   location_id Int //one service has a vincule with a location
 
   followers Follower[] //one service has many follers
-  Phone     Phone[] //one service has many phones
+  phones    Phone[] //one service has many phones
 
   @@map("services")
 }
@@ -87,8 +87,8 @@ model Phone {
   updated_at  DateTime  @updatedAt
   deleted_at  DateTime?
 
-  service    Service @relation(fields: [service_id], references: [id])
   service_id String //one phone is vinculed to one service
+  service    Service @relation(fields: [service_id], references: [id])
 
   @@map("phones")
 }
