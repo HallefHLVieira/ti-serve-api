@@ -4,40 +4,47 @@ export async function refreshController(
   request: FastifyRequest,
   reply: FastifyReply,
 ) {
-  // Validando que o usuário está autenticado
-  await request.jwtVerify({ onlyCookie: true }) // Não olha para o cabeçalho da request, olha apenas para os cookies e verifica se há um refreshToken
+  try {
+    // Validando que o usuário está autenticado
+    await request.jwtVerify({ onlyCookie: true })
 
-  const { role } = request.user
-  const token = await reply.jwtSign(
-    {
-      role,
-    },
-    {
-      sign: {
-        sub: request.user.sub,
+    const { role } = request.user
+    const token = await reply.jwtSign(
+      {
+        role,
       },
-    },
-  )
-
-  const refreshToken = await reply.jwtSign(
-    {
-      role,
-    },
-    {
-      sign: {
-        sub: request.user.sub,
-        expiresIn: '3d',
+      {
+        sign: {
+          sub: request.user.sub,
+        },
       },
-    },
-  )
+    )
 
-  return reply
-    .setCookie('refreshToken', refreshToken, {
-      path: '/',
-      secure: false, // encriptado pelo https
-      sameSite: true, // acessível dentro do site apenas
-      httpOnly: true, // apenas o backend acessa o valor do cookie
-    })
-    .status(200)
-    .send({ token })
+    const refreshToken = await reply.jwtSign(
+      {
+        role,
+      },
+      {
+        sign: {
+          sub: request.user.sub,
+          expiresIn: '3d',
+        },
+      },
+    )
+
+    return reply
+      .setCookie('refreshToken', refreshToken, {
+        path: '/',
+        secure: process.env.NODE_ENV === 'production', // Usa HTTPS em produção
+        sameSite: 'strict', // Ajuste conforme necessário
+        httpOnly: true,
+      })
+      .status(200)
+      .send({ token })
+  } catch (error) {
+    console.error('Error in refreshController:', error)
+    return reply
+      .status(500)
+      .send({ message: `Internal server error ${error.message}` })
+  }
 }
