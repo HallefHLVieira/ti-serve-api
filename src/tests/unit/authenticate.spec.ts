@@ -20,13 +20,13 @@ describe('Authenticate Use Case', () => {
 
     await inMemoryUsersRepository.create({
       name: 'John Doe',
-      phone: '99999999999',
+      phone: '88999887755',
       password_hash: await hash('123456', 5),
       location_id: 1,
     })
 
     const { user } = await sut.execute({
-      phone: '99999999999',
+      phone: '88999887755',
       password: '123456',
     })
 
@@ -38,7 +38,7 @@ describe('Authenticate Use Case', () => {
 
     expect(() =>
       sut.execute({
-        phone: '99999999999',
+        phone: '88999887755',
         password: '123456',
       }),
     ).rejects.toBeInstanceOf(InvalidCredentialsError)
@@ -49,14 +49,14 @@ describe('Authenticate Use Case', () => {
 
     await inMemoryUsersRepository.create({
       name: 'John Doe',
-      phone: '99999999999',
+      phone: '88999887755',
       password_hash: await hash('123456', 5),
       location_id: 1,
     })
 
     expect(() =>
       sut.execute({
-        phone: '99999999999',
+        phone: '88999887755',
         password: '123123',
       }),
     ).rejects.toBeInstanceOf(InvalidCredentialsError)
