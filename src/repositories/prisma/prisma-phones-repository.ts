@@ -9,4 +9,14 @@ export class PrismaPhonesRepository implements IPhonesRepository {
     })
     return phone
   }
+
+  async fetchByService(serviceId: string): Promise<Phone[] | []> {
+    const phones = await prisma.phone.findMany({
+      where: {
+        service_id: serviceId,
+      },
+    })
+
+    return phones
+  }
 }

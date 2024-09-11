@@ -14,7 +14,7 @@ describe('Service Use Case', () => {
   beforeEach(() => {
     servicesRepository = new InMemoryServicesRepository()
     sut = new ServiceUseCase(servicesRepository, phonesRepository)
-    listSut = new FetchServiceUseCase(servicesRepository)
+    listSut = new FetchServiceUseCase(servicesRepository, phonesRepository)
   })
 
   it('should be able see a empty list with active services', async () => {
@@ -22,20 +22,32 @@ describe('Service Use Case', () => {
 
     await sut.execute({
       userId: 'user-01',
-      name: 'Geek-frames',
-      description: 'Loja de quadros decorativos.',
-      street: 'Avenida Juarez Bender',
-      number: '163',
+      name: 'Service-01',
+      description: 'Descrição',
+      street: 'Rua-01',
+      number: '100',
       locationId: 1,
+      phones: [
+        {
+          number: '88988776655',
+          isWhatsapp: true,
+        },
+      ],
     })
 
     await sut.execute({
       userId: 'User-02',
-      name: 'Mercadinho da Carol',
-      description: 'Vende de tudo.',
-      street: 'Avenida Juarez Bender',
-      number: '155',
+      name: 'Service-02',
+      description: 'Descrição',
+      street: 'Rua-02',
+      number: '100',
       locationId: 1,
+      phones: [
+        {
+          number: '88988776644',
+          isWhatsapp: true,
+        },
+      ],
     })
 
     const servicesList = await listSut.execute()
@@ -50,18 +62,30 @@ describe('Service Use Case', () => {
       userId: 'user-01',
       name: 'Service-01',
       description: 'Descrição',
-      street: 'Rua 01',
+      street: 'Rua-01',
       number: '100',
       locationId: 1,
+      phones: [
+        {
+          number: '88988776655',
+          isWhatsapp: true,
+        },
+      ],
     })
 
     await sut.execute({
       userId: 'User-02',
       name: 'Service-02',
       description: 'Descrição',
-      street: 'Rua 02',
+      street: 'Rua-02',
       number: '100',
       locationId: 1,
+      phones: [
+        {
+          number: '88988776644',
+          isWhatsapp: true,
+        },
+      ],
     })
 
     const servicesList = await listSut.execute()

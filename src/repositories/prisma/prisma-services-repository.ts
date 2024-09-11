@@ -19,7 +19,7 @@ export class PrismaServicesRepository implements IServicesRepository {
     return service
   }
 
-  async listServices(): Promise<[] | Service[]> {
+  async listServices(): Promise<Service[]> {
     const services = await prisma.service.findMany({
       where: {
         is_valid: true,

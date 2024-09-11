@@ -17,4 +17,12 @@ export class InMemoryPhonesRepository implements IPhonesRepository {
     this.phonesTable.push(phone)
     return phone
   }
+
+  async fetchByService(serviceId: string): Promise<Phone[] | []> {
+    const phones: Phone[] = this.phonesTable.filter(
+      (phone) => phone.service_id === serviceId,
+    )
+
+    return phones
+  }
 }
