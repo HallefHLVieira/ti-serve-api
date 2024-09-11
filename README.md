@@ -79,7 +79,7 @@ To eacth functionality, the tasks should includes:
 - [x] 9 - Deve ser possível um membro gostar de um serviço; MVP(FIFERENCIAL DO NEGÓCIO)
 - [x] 10 - Deve ser possível um membro desgostar de um serviço; ----------- MVP
 - [ ] 11 - Deve ser possível um membro desativar sua conta; 
-- [ ] 12 - Deve ser possível um membro adicionar uma foto de perfil; 
+- [ ] 12 - Deve ser possível um membro adicionar uma foto de perfil;
   
 <!-- feats futuras -->
 - [ ] Deve ser possível buscar um serviço pelo nome;
@@ -102,7 +102,8 @@ To eacth functionality, the tasks should includes:
 - [ ] Todo status de verificação só pode ser atualizado por um administrador;
 - [ ] Todo processo de verificação, requer preenchimento de campos de identificação/localização
 - [x] O usuário não pode ter o mesmo número de celular de outra pessoa;
-  
+- [] Ao buscar um serviço, deve vir todas as informações referentes ao serviço, incluindo contatos e número de curtidas
+- 
   <!-- PARA RF 02-->
   <!-- PARA RF 03-->
   <!-- PARA RF 04-->

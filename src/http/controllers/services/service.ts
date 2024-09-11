@@ -7,15 +7,21 @@ export async function createServiceController(
   request: FastifyRequest,
   reply: FastifyReply,
 ) {
+  const phonesDataSchema = z.object({
+    number: z.string(),
+    isWhatsapp: z.boolean(),
+  })
+
   const serviceBodySchema = z.object({
     name: z.string(),
     description: z.string().max(250),
     street: z.string(),
     number: z.string(),
     locationId: z.number(),
+    phones: z.array(phonesDataSchema),
   })
 
-  const { name, description, number, street, locationId } =
+  const { name, description, number, street, locationId, phones } =
     serviceBodySchema.parse(request.body)
 
   try {
@@ -28,6 +34,7 @@ export async function createServiceController(
       number,
       userId: request.user.sub,
       locationId,
+      phones,
     })
   } catch (err) {
     if (err instanceof ServiceAlreadyExistsError) {
