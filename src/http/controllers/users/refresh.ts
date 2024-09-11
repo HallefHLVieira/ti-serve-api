@@ -34,7 +34,7 @@ export async function refreshController(
   return reply
     .setCookie('refreshToken', refreshToken, {
       path: '/',
-      secure: true, // encriptado pelo https
+      secure: false, // encriptado pelo https
       sameSite: true, // acessível dentro do site apenas
       httpOnly: true, // apenas o backend acessa o valor do cookie
     })
