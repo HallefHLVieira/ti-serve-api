@@ -35,7 +35,7 @@ export async function refreshController(
     return reply
       .setCookie('refreshToken', refreshToken, {
         path: '/',
-        secure: process.env.NODE_ENV === 'production', // Usa HTTPS em produção
+        secure: process.env.NODE_ENV !== 'production', // Usa HTTPS em produção
         sameSite: 'strict', // Ajuste conforme necessário
         httpOnly: true,
       })
