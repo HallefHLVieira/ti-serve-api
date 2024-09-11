@@ -19,7 +19,7 @@ interface ServiceUseCaseRequest {
 
 interface ServiceUseCaseResponse {
   service: Service
-  phonesSaved: Phone[] | undefined
+  phonesSaved: Phone[] | []
 }
 
 export class ServiceUseCase {
@@ -77,7 +77,7 @@ export class ServiceUseCase {
 
     return {
       service,
-      phonesSaved: undefined,
+      phonesSaved: [],
     }
   }
 }

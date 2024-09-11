@@ -32,8 +32,9 @@ describe('Service Use Case', () => {
         },
       ],
     })
+
     expect(service.id).toEqual(expect.any(String))
-    if (phonesSaved?.length) {
+    if (phonesSaved.length) {
       expect(phonesSaved[0].id).toEqual(1)
     }
   })
