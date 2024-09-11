@@ -52,6 +52,7 @@ export class ServiceUseCase {
       number,
       location_id: locationId,
     })
+
     if (service && phones?.length) {
       await Promise.all(
         phones.map(async (phone) => {
