@@ -1,3 +1,4 @@
+import { makeFetchPhonesByServiceUseCase } from '@/use-cases/factories/make-fetch-phones-by-service-use-case'
 import { makeGetServiceByIdUseCase } from '@/use-cases/factories/make-get-service-by-id-use-case'
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
@@ -11,12 +12,16 @@ export async function fetchServicesByIdController(
       serviceId: z.string(),
     })
     const { serviceId } = getServiceByIdParamsSchema.parse(request.params)
+
     const fetchServiceByIdUseCase = makeGetServiceByIdUseCase()
-    const service = await fetchServiceByIdUseCase.execute({
+    const { service } = await fetchServiceByIdUseCase.execute({
       serviceId,
     })
 
-    return reply.status(200).send(service)
+    const fetchPhonesByServiceUseCase = makeFetchPhonesByServiceUseCase()
+    const phones = await fetchPhonesByServiceUseCase.execute({ serviceId })
+
+    return reply.status(200).send({ ...service, phones })
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     return reply.status(500).send({ message: err.message })
