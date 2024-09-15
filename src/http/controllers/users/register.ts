@@ -21,20 +21,19 @@ export async function registerController(
   try {
     const registerUseCase = makeRegisterUseCase()
 
-    await registerUseCase.execute({
+    const user = await registerUseCase.execute({
       name,
       password,
       phone,
       locationId,
     })
+
+    return reply.status(201).send({ user })
   } catch (err) {
     if (err instanceof UserAlreeadyExistsError) {
       return reply.status(409).send({ message: err.message })
     }
 
-    // reply.status(500).send() // TODO: fix me
-    throw err
+    return reply.status(500).send({ message: err.message })
   }
-
-  return reply.status(201).send()
 }

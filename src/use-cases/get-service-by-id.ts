@@ -1,24 +1,37 @@
-import { Service } from '@prisma/client'
+import { Phone, Service } from '@prisma/client'
 import { IServicesRepository } from '@/repositories/services-repository'
+import { IPhonesRepository } from '@/repositories/phones-repository'
+import { IFollowersRepository } from '@/repositories/followers-repository'
+import { ResourceNotFoundError } from './errors/resource-not-found-error'
 
 interface FetchServiceByIdRequest {
   serviceId: string
 }
 
-interface FetchServiceByIdResponse {
-  service: Service | null
+interface FetchServiceByIdResponse extends Service {
+  phones: Phone[]
+  likes: number
 }
 
 export class GetServiceByIdUseCase {
-  constructor(private servicesRepository: IServicesRepository) {}
+  constructor(
+    private servicesRepository: IServicesRepository,
+    private phonesRepository: IPhonesRepository,
+    private followersRepository: IFollowersRepository,
+  ) {}
 
   async execute({
     serviceId,
-  }: FetchServiceByIdRequest): Promise<FetchServiceByIdResponse> {
+  }: FetchServiceByIdRequest): Promise<FetchServiceByIdResponse | null> {
     const service = await this.servicesRepository.serviceById(serviceId)
 
-    return {
-      service,
+    if (service) {
+      const phones = await this.phonesRepository.fetchByService(serviceId)
+      const followers = await this.followersRepository.findByService(serviceId)
+
+      return { ...service, phones, likes: followers.length }
     }
+
+    throw new ResourceNotFoundError()
   }
 }

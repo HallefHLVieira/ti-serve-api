@@ -7,6 +7,7 @@ export class PrismaPhonesRepository implements IPhonesRepository {
     const phone = await prisma.phone.create({
       data,
     })
+
     return phone
   }
 

@@ -1,5 +1,4 @@
-import { makeFetchFollowersByServiceUseCase } from '@/use-cases/factories/make-fetch-followers-by-service-use-case'
-import { makeFetchPhonesByServiceUseCase } from '@/use-cases/factories/make-fetch-phones-by-service-use-case'
+import { ResourceNotFoundError } from '@/use-cases/errors/resource-not-found-error'
 import { makeGetServiceByIdUseCase } from '@/use-cases/factories/make-get-service-by-id-use-case'
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
@@ -15,21 +14,17 @@ export async function fetchServicesByIdController(
     const { serviceId } = getServiceByIdParamsSchema.parse(request.params)
 
     const fetchServiceByIdUseCase = makeGetServiceByIdUseCase()
-    const { service } = await fetchServiceByIdUseCase.execute({
+
+    const result = await fetchServiceByIdUseCase.execute({
       serviceId,
     })
 
-    const fetchPhonesByServiceUseCase = makeFetchPhonesByServiceUseCase()
-    const { phones } = await fetchPhonesByServiceUseCase.execute({ serviceId })
-
-    const fetchLikesByService = makeFetchFollowersByServiceUseCase()
-    const { followers } = await fetchLikesByService.execute({ serviceId })
-
-    return reply
-      .status(200)
-      .send({ ...service, phones, likes: followers.length })
+    return reply.status(200).send({ result })
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
+    if (err instanceof ResourceNotFoundError) {
+      return reply.status(404).send({ message: err.message })
+    }
     return reply.status(500).send({ message: err.message })
   }
 }
