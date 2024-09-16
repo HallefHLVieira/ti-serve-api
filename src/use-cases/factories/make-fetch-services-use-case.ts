@@ -1,14 +1,14 @@
 import { PrismaServicesRepository } from '@/repositories/prisma/prisma-services-repository'
 import { FetchServiceUseCase } from '../fetch-services'
-import { PrismaPhonesRepository } from '@/repositories/prisma/prisma-phones-repository'
+import { PrismaFollowersRepository } from '@/repositories/prisma/prisma.followers-repository'
 
 export function makeFetchServicesUseCase() {
   const servicesRepository = new PrismaServicesRepository()
-  const phonesRepository = new PrismaPhonesRepository()
+  const followersRepository = new PrismaFollowersRepository()
 
   const fetchServicesByUserUseCase = new FetchServiceUseCase(
     servicesRepository,
-    phonesRepository,
+    followersRepository,
   )
 
   return fetchServicesByUserUseCase

@@ -1,9 +1,9 @@
-import type { Phone, Service } from '@prisma/client'
+import type { Service } from '@prisma/client'
 import { IServicesRepository } from '@/repositories/services-repository'
-import { IPhonesRepository } from '@/repositories/phones-repository'
+import { IFollowersRepository } from '@/repositories/followers-repository'
 
 interface ServiceWithPhones extends Service {
-  phones: Phone[]
+  likes: number
 }
 
 interface ServiceUseCaseResponse {
@@ -13,7 +13,7 @@ interface ServiceUseCaseResponse {
 export class FetchServiceUseCase {
   constructor(
     private servicesRepository: IServicesRepository,
-    private phonesRepository: IPhonesRepository,
+    private followersRepository: IFollowersRepository,
   ) {}
 
   async execute(): Promise<ServiceUseCaseResponse> {
@@ -22,11 +22,13 @@ export class FetchServiceUseCase {
     if (services.length > 0) {
       const servicesWithPhone = await Promise.all(
         services.map(async (service): Promise<ServiceWithPhones> => {
-          const phones = await this.phonesRepository.fetchByService(service.id)
+          const followers = await this.followersRepository.findByService(
+            service.id,
+          )
 
           return {
             ...service,
-            phones,
+            likes: followers.length,
           }
         }),
       )

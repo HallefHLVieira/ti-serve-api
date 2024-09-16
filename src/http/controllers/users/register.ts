@@ -29,7 +29,8 @@ export async function registerController(
     })
 
     return reply.status(201).send({ user })
-  } catch (err) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (err: any) {
     if (err instanceof UserAlreeadyExistsError) {
       return reply.status(409).send({ message: err.message })
     }
