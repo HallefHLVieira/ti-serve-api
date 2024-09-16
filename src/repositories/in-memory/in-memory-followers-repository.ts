@@ -44,4 +44,23 @@ export class InMemoryFollowersRepository implements IFollowersRepository {
     }
     return this.followersTable[followersIndex]
   }
+
+  async findByService(serviceId: string): Promise<
+    | {
+        id: number
+        liked: boolean
+        created_at: Date
+        updated_at: Date
+        deleted_at: Date | null
+        user_id: string
+        service_id: string
+      }[]
+    | []
+  > {
+    const followers = await this.followersTable.filter(
+      (like) => like.service_id === serviceId && like.liked === true,
+    )
+
+    return followers
+  }
 }

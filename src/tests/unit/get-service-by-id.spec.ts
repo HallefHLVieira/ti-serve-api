@@ -3,9 +3,13 @@ import { ServiceUseCase } from '../../use-cases/service'
 import { InMemoryServicesRepository } from '@/repositories/in-memory/in-memory-services-repository'
 import { GetServiceByIdUseCase } from '../../use-cases/get-service-by-id'
 import { InMemoryPhonesRepository } from '@/repositories/in-memory/in-memory-phones-repository'
+import { InMemoryFollowersRepository } from '@/repositories/in-memory/in-memory-followers-repository'
+import { ResourceNotFoundError } from '@/use-cases/errors/resource-not-found-error'
 
 let servicesRepository: InMemoryServicesRepository
 let phonesRepository: InMemoryPhonesRepository
+let followersRepository: InMemoryFollowersRepository
+
 let sut: ServiceUseCase
 let serviceSut: GetServiceByIdUseCase
 
@@ -13,9 +17,14 @@ describe('Get Services by Name Use Case', () => {
   beforeEach(() => {
     servicesRepository = new InMemoryServicesRepository()
     phonesRepository = new InMemoryPhonesRepository()
+    followersRepository = new InMemoryFollowersRepository()
 
     sut = new ServiceUseCase(servicesRepository, phonesRepository)
-    serviceSut = new GetServiceByIdUseCase(servicesRepository)
+    serviceSut = new GetServiceByIdUseCase(
+      servicesRepository,
+      phonesRepository,
+      followersRepository,
+    )
   })
 
   it('Should be able return a service by id with valid id', async () => {
@@ -32,7 +41,7 @@ describe('Get Services by Name Use Case', () => {
       locationId: 1,
     })
 
-    const { service } = await serviceSut.execute({
+    const service = await serviceSut.execute({
       serviceId: resultSut.service.id,
     })
 
@@ -53,10 +62,10 @@ describe('Get Services by Name Use Case', () => {
       locationId: 1,
     })
 
-    const { service } = await serviceSut.execute({
-      serviceId: 'invalid-id',
-    })
-
-    expect(service?.id).toEqual(undefined)
+    await expect(() =>
+      serviceSut.execute({
+        serviceId: 'invalid-id',
+      }),
+    ).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
 })

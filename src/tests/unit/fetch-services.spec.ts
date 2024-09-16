@@ -3,8 +3,10 @@ import { ServiceUseCase } from '../../use-cases/service'
 import { FetchServiceUseCase } from '../../use-cases/fetch-services'
 import { InMemoryServicesRepository } from '@/repositories/in-memory/in-memory-services-repository'
 import { InMemoryPhonesRepository } from '@/repositories/in-memory/in-memory-phones-repository'
+import { InMemoryFollowersRepository } from '@/repositories/in-memory/in-memory-followers-repository'
 
 let servicesRepository: InMemoryServicesRepository
+let followersRepository: InMemoryFollowersRepository
 let phonesRepository: InMemoryPhonesRepository
 
 let sut: ServiceUseCase
@@ -13,8 +15,11 @@ let listSut: FetchServiceUseCase
 describe('Service Use Case', () => {
   beforeEach(() => {
     servicesRepository = new InMemoryServicesRepository()
+    followersRepository = new InMemoryFollowersRepository()
+    phonesRepository = new InMemoryPhonesRepository()
+
     sut = new ServiceUseCase(servicesRepository, phonesRepository)
-    listSut = new FetchServiceUseCase(servicesRepository, phonesRepository)
+    listSut = new FetchServiceUseCase(servicesRepository, followersRepository)
   })
 
   it('should be able see a empty list with active services', async () => {
