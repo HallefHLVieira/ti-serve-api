@@ -1,4 +1,4 @@
-import { makeGetUserProfileUseCase } from '@/use-cases/factories/make-get-user-profile-use-case'
+import { makeGetUserProfileUseCase } from '@/tests/domain/use-cases/factories/make-get-user-profile-use-case'
 import { FastifyRequest, FastifyReply } from 'fastify'
 
 export async function profileController(
@@ -10,7 +10,6 @@ export async function profileController(
     userId: request.user.sub,
   })
 
-  console.log(request.user.sub)
   return reply.status(200).send({
     user: {
       ...user,

@@ -1,7 +1,7 @@
 import { prisma } from '@/lib/prisma'
 import { Follower, Prisma } from '@prisma/client'
 import { IFollowersRepository } from '../followers-repository'
-import { FollowersNotFoundError } from '../../use-cases/errors/followers-not-found'
+import { FollowersNotFoundError } from '../../tests/domain/use-cases/errors/followers-not-found'
 
 export class PrismaFollowersRepository implements IFollowersRepository {
   async createOrUpdate(

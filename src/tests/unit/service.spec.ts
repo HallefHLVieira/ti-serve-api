@@ -1,8 +1,8 @@
 import { expect, describe, it, beforeEach } from 'vitest'
-import { ServiceUseCase } from '../../use-cases/service'
-import { InMemoryServicesRepository } from '@/repositories/in-memory/in-memory-services-repository'
-import { ServiceAlreadyExistsError } from '../../use-cases/errors/service-already-exists'
-import { InMemoryPhonesRepository } from '@/repositories/in-memory/in-memory-phones-repository'
+import { ServiceUseCase } from '../domain/use-cases/service'
+import { InMemoryServicesRepository } from '@/tests/domain/repositories/in-memory/in-memory-services-repository'
+import { ServiceAlreadyExistsError } from '../domain/use-cases/errors/service-already-exists'
+import { InMemoryPhonesRepository } from '@/tests/domain/repositories/in-memory/in-memory-phones-repository'
 
 let servicesRepository: InMemoryServicesRepository
 let phonesRepository: InMemoryPhonesRepository

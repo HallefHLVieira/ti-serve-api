@@ -1,5 +1,5 @@
 import { Follower } from '@prisma/client'
-import { IFollowersRepository } from '@/repositories/followers-repository'
+import { IFollowersRepository } from '@/tests/domain/repositories/followers-repository'
 
 interface FetchFollowersByServiceRequest {
   serviceId: string

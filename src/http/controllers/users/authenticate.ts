@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { FastifyRequest, FastifyReply } from 'fastify'
-import { InvalidCredentialsError } from '@/use-cases/errors/invalid-credentials-error'
-import { makeAuthenticateUseCase } from '@/use-cases/factories/make-authenticate-use-case'
+import { InvalidCredentialsError } from '@/tests/domain/use-cases/errors/invalid-credentials-error'
+import { makeAuthenticateUseCase } from '@/tests/domain/use-cases/factories/make-authenticate-use-case'
 
 export async function authenticateController(
   request: FastifyRequest,
@@ -48,7 +48,7 @@ export async function authenticateController(
     return reply
       .setCookie('refreshToken', refreshToken, {
         path: '/',
-        secure: true, // encriptado pelo https
+        // secure: true, // encriptado pelo https
         sameSite: true, // acessível dentro do site apenas
         httpOnly: true, // apenas o backend acessa o valor do cookie
       })

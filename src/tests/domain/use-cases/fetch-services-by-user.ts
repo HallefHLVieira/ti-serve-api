@@ -1,5 +1,5 @@
 import type { Service } from '@prisma/client'
-import { IServicesRepository } from '@/repositories/services-repository'
+import { IServicesRepository } from '@/tests/domain/repositories/services-repository'
 
 interface FetchServicesByUserRequest {
   userId: string

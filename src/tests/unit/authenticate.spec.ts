@@ -1,8 +1,8 @@
 import { expect, describe, it, beforeEach } from 'vitest'
-import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
-import { AuthenticateUseCase } from '../../use-cases/authenticate'
+import { AuthenticateUseCase } from '../domain/use-cases/authenticate'
 import { hash } from 'bcryptjs'
-import { InvalidCredentialsError } from '../../use-cases/errors/invalid-credentials-error'
+import { InvalidCredentialsError } from '../domain/use-cases/errors/invalid-credentials-error'
+import { InMemoryUsersRepository } from '../domain/repositories/in-memory/in-memory-users-repository'
 
 // sut = system under test ou variável principal que está sendo testada
 

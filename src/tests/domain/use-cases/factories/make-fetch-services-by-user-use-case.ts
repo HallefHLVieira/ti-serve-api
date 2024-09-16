@@ -1,4 +1,4 @@
-import { PrismaServicesRepository } from '@/repositories/prisma/prisma-services-repository'
+import { PrismaServicesRepository } from '@/tests/domain/repositories/prisma/prisma-services-repository'
 import { FetchServicesByUserUseCase } from '../fetch-services-by-user'
 
 export function makeFetchServicesByUserUseCase() {

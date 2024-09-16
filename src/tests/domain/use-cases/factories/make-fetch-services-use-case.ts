@@ -1,4 +1,4 @@
-import { PrismaServicesRepository } from '@/repositories/prisma/prisma-services-repository'
+import { PrismaServicesRepository } from '@/tests/domain/repositories/prisma/prisma-services-repository'
 import { FetchServiceUseCase } from '../fetch-services'
 import { PrismaFollowersRepository } from '@/repositories/prisma/prisma.followers-repository'
 

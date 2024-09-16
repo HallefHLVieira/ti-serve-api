@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { FastifyRequest, FastifyReply } from 'fastify'
-import { FollowerAlreadyExistsError } from '@/use-cases/errors/followers-already-exists'
-import { makeUserFollowRepositoryUseCase } from '@/use-cases/factories/make-follow-service'
+import { FollowerAlreadyExistsError } from '@/tests/domain/use-cases/errors/followers-already-exists'
+import { makeUserFollowRepositoryUseCase } from '@/tests/domain/use-cases/factories/make-follow-service'
 
 export async function followController(
   request: FastifyRequest,

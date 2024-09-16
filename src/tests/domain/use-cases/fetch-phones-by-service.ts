@@ -1,5 +1,5 @@
 import { Phone } from '@prisma/client'
-import { IPhonesRepository } from '@/repositories/phones-repository'
+import { IPhonesRepository } from '@/tests/domain/repositories/phones-repository'
 
 interface FetchPhonesByServiceRequest {
   serviceId: string

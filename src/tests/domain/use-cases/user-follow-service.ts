@@ -1,5 +1,5 @@
 import type { Follower } from '@prisma/client'
-import { IFollowersRepository } from '@/repositories/followers-repository'
+import { IFollowersRepository } from '@/tests/domain/repositories/followers-repository'
 import { FollowerAlreadyExistsError } from './errors/followers-already-exists'
 
 interface FollowUseCaseRequest {

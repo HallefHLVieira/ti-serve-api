@@ -1,10 +1,10 @@
 import { expect, describe, it, beforeEach } from 'vitest'
-import { ServiceUseCase } from '../../use-cases/service'
-import { InMemoryServicesRepository } from '@/repositories/in-memory/in-memory-services-repository'
-import { GetServiceByIdUseCase } from '../../use-cases/get-service-by-id'
-import { InMemoryPhonesRepository } from '@/repositories/in-memory/in-memory-phones-repository'
-import { InMemoryFollowersRepository } from '@/repositories/in-memory/in-memory-followers-repository'
-import { ResourceNotFoundError } from '@/use-cases/errors/resource-not-found-error'
+import { ServiceUseCase } from '../domain/use-cases/service'
+import { InMemoryServicesRepository } from '@/tests/domain/repositories/in-memory/in-memory-services-repository'
+import { GetServiceByIdUseCase } from '../domain/use-cases/get-service-by-id'
+import { InMemoryPhonesRepository } from '@/tests/domain/repositories/in-memory/in-memory-phones-repository'
+import { InMemoryFollowersRepository } from '@/tests/domain/repositories/in-memory/in-memory-followers-repository'
+import { ResourceNotFoundError } from '@/tests/domain/use-cases/errors/resource-not-found-error'
 
 let servicesRepository: InMemoryServicesRepository
 let phonesRepository: InMemoryPhonesRepository

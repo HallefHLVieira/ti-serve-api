@@ -1,7 +1,7 @@
 import type { Phone, Service } from '@prisma/client'
-import { IServicesRepository } from '@/repositories/services-repository'
+import { IServicesRepository } from '@/tests/domain/repositories/services-repository'
 import { ServiceAlreadyExistsError } from './errors/service-already-exists'
-import { IPhonesRepository } from '@/repositories/phones-repository'
+import { IPhonesRepository } from '@/tests/domain/repositories/phones-repository'
 
 interface Phones {
   number: string

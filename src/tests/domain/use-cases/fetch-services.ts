@@ -1,6 +1,6 @@
 import type { Service } from '@prisma/client'
-import { IServicesRepository } from '@/repositories/services-repository'
-import { IFollowersRepository } from '@/repositories/followers-repository'
+import { IServicesRepository } from '@/tests/domain/repositories/services-repository'
+import { IFollowersRepository } from '@/tests/domain/repositories/followers-repository'
 
 interface ServiceWithPhones extends Service {
   likes: number

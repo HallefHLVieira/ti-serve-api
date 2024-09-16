@@ -1,4 +1,4 @@
-import { IUsersRepository } from '@/repositories/users-repository'
+import { IUsersRepository } from '@/tests/domain/repositories/users-repository'
 import { User } from '@prisma/client'
 
 interface UpdateUserProfileUseCaseRequest {

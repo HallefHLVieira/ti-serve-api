@@ -1,6 +1,6 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
-import { makeFetchServicesUseCase } from '@/use-cases/factories/make-fetch-services-use-case'
-import { makeFetchFollowersByServiceUseCase } from '@/use-cases/factories/make-fetch-followers-by-service-use-case'
+import { makeFetchServicesUseCase } from '@/tests/domain/use-cases/factories/make-fetch-services-use-case'
+import { makeFetchFollowersByServiceUseCase } from '@/tests/domain/use-cases/factories/make-fetch-followers-by-service-use-case'
 
 export async function fetchServicesController(
   request: FastifyRequest,
