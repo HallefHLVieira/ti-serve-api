@@ -1,8 +1,8 @@
 import { prisma } from '@/lib/prisma'
 import { Prisma, User } from '@prisma/client'
 import { IUsersRepository } from '../users-repository'
-import { ResourceNotFoundError } from '@/tests/domain/use-cases/errors/resource-not-found-error'
-import { InvalidPhoneToUpdateError } from '@/tests/domain/use-cases/errors/invalid-phone-to-update-error'
+import { InvalidPhoneToUpdateError } from '@/domain/use-cases/errors/invalid-phone-to-update-error'
+import { ResourceNotFoundError } from '@/domain/use-cases/errors/resource-not-found-error'
 
 export class PrismaUsersRepository implements IUsersRepository {
   async findById(userId: string): Promise<User | null> {
