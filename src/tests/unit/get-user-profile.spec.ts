@@ -1,8 +1,8 @@
 import { expect, describe, it, beforeEach } from 'vitest'
-import { InMemoryUsersRepository } from '@/tests/domain/repositories/in-memory/in-memory-users-repository'
-import { GetUserProfileUseCase } from '../domain/use-cases/get-user-profile'
 import { hash } from 'bcryptjs'
-import { ResourceNotFoundError } from '../domain/use-cases/errors/resource-not-found-error'
+import { InMemoryUsersRepository } from '@/domain/repositories/in-memory/in-memory-users-repository'
+import { GetUserProfileUseCase } from '@/domain/use-cases/get-user-profile'
+import { ResourceNotFoundError } from '@/domain/use-cases/errors/resource-not-found-error'
 
 // sut = system under test ou variável principal que está sendo testada
 

@@ -1,4 +1,4 @@
-import { makeFetchServicesByUserUseCase } from '@/tests/domain/use-cases/factories/make-fetch-services-by-user-use-case'
+import { makeFetchServicesByUserUseCase } from '@/domain/use-cases/factories/make-fetch-services-by-user-use-case'
 import { FastifyRequest, FastifyReply } from 'fastify'
 
 export async function fetchServicesByUserController(

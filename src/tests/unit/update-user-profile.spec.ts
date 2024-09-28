@@ -1,9 +1,9 @@
 import { expect, describe, it, beforeEach } from 'vitest'
-import { InMemoryUsersRepository } from '@/tests/domain/repositories/in-memory/in-memory-users-repository'
 import { hash } from 'bcryptjs'
-import { UpdateUserProfileUseCase } from '../domain/use-cases/update-user-profile'
-import { UserNotFoundOrInvalidError } from '../domain/use-cases/errors/user-not-found-or-invalid-error'
-import { InvalidPhoneToUpdateError } from '../domain/use-cases/errors/invalid-phone-to-update-error'
+import { InMemoryUsersRepository } from '@/domain/repositories/in-memory/in-memory-users-repository'
+import { UpdateUserProfileUseCase } from '@/domain/use-cases/update-user-profile'
+import { InvalidPhoneToUpdateError } from '@/domain/use-cases/errors/invalid-phone-to-update-error'
+import { UserNotFoundOrInvalidError } from '@/domain/use-cases/errors/user-not-found-or-invalid-error'
 
 // sut = system under test ou variável principal que está sendo testada
 

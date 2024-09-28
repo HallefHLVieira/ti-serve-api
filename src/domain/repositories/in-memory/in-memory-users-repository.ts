@@ -1,7 +1,7 @@
 import { Prisma, Role, User } from '@prisma/client'
 import { IUsersRepository } from '../users-repository'
-import { UserNotFoundOrInvalidError } from '@/tests/domain/use-cases/errors/user-not-found-or-invalid-error'
-import { InvalidPhoneToUpdateError } from '@/tests/domain/use-cases/errors/invalid-phone-to-update-error'
+import { InvalidPhoneToUpdateError } from '@/domain/use-cases/errors/invalid-phone-to-update-error'
+import { UserNotFoundOrInvalidError } from '@/domain/use-cases/errors/user-not-found-or-invalid-error'
 
 export class InMemoryUsersRepository implements IUsersRepository {
   public usersTable: User[] = []

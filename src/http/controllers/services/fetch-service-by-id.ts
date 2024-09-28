@@ -1,5 +1,5 @@
-import { ResourceNotFoundError } from '@/tests/domain/use-cases/errors/resource-not-found-error'
-import { makeGetServiceByIdUseCase } from '@/tests/domain/use-cases/factories/make-get-service-by-id-use-case'
+import { ResourceNotFoundError } from '@/domain/use-cases/errors/resource-not-found-error'
+import { makeGetServiceByIdUseCase } from '@/domain/use-cases/factories/make-get-service-by-id-use-case'
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
 

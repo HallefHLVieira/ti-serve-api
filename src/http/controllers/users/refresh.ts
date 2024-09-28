@@ -41,7 +41,8 @@ export async function refreshController(
       })
       .status(200)
       .send({ token })
-  } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
     console.error('Error in refreshController:', error)
     return reply
       .status(500)

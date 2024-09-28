@@ -1,8 +1,8 @@
+import { InMemoryPhonesRepository } from '@/domain/repositories/in-memory/in-memory-phones-repository'
+import { InMemoryServicesRepository } from '@/domain/repositories/in-memory/in-memory-services-repository'
+import { FetchServicesByUserUseCase } from '@/domain/use-cases/fetch-services-by-user'
+import { ServiceUseCase } from '@/domain/use-cases/service'
 import { expect, describe, it, beforeEach } from 'vitest'
-import { ServiceUseCase } from '../domain/use-cases/service'
-import { InMemoryServicesRepository } from '@/tests/domain/repositories/in-memory/in-memory-services-repository'
-import { FetchServicesByUserUseCase } from '../domain/use-cases/fetch-services-by-user'
-import { InMemoryPhonesRepository } from '@/tests/domain/repositories/in-memory/in-memory-phones-repository'
 
 let servicesRepository: InMemoryServicesRepository
 let phonesRepository: InMemoryPhonesRepository

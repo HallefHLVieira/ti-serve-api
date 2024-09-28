@@ -1,6 +1,6 @@
-import { InvalidPhoneToUpdateError } from '@/tests/domain/use-cases/errors/invalid-phone-to-update-error'
-import { ResourceNotFoundError } from '@/tests/domain/use-cases/errors/resource-not-found-error'
-import { makeUpdateUserProfileUseCase } from '@/tests/domain/use-cases/factories/make-update-user-profile-use-case copy'
+import { InvalidPhoneToUpdateError } from '@/domain/use-cases/errors/invalid-phone-to-update-error'
+import { ResourceNotFoundError } from '@/domain/use-cases/errors/resource-not-found-error'
+import { makeUpdateUserProfileUseCase } from '@/domain/use-cases/factories/make-update-user-profile-use-case copy'
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { z } from 'zod'
 

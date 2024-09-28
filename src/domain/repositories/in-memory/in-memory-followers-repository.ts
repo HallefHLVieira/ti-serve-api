@@ -1,6 +1,6 @@
 import { Follower, Prisma } from '@prisma/client'
 import { IFollowersRepository } from '../followers-repository'
-import { FollowersNotFoundError } from '@/tests/domain/use-cases/errors/followers-not-found'
+import { FollowersNotFoundError } from '@/domain/use-cases/errors/followers-not-found'
 
 export class InMemoryFollowersRepository implements IFollowersRepository {
   public followersTable: Follower[] = []

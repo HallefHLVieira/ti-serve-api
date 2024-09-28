@@ -1,7 +1,7 @@
+import { InMemoryFollowersRepository } from '@/domain/repositories/in-memory/in-memory-followers-repository'
+import { FollowerAlreadyExistsError } from '@/domain/use-cases/errors/followers-already-exists'
+import { UserFollowServiceUseCase } from '@/domain/use-cases/user-follow-service'
 import { expect, describe, it, beforeEach } from 'vitest'
-import { UserFollowServiceUseCase } from '../domain/use-cases/user-follow-service'
-import { InMemoryFollowersRepository } from '../domain/repositories/in-memory/in-memory-followers-repository'
-import { FollowerAlreadyExistsError } from '../domain/use-cases/errors/followers-already-exists'
 
 let inMemoryFollowersRepository: InMemoryFollowersRepository
 let sut: UserFollowServiceUseCase

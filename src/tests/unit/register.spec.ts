@@ -1,8 +1,8 @@
 import { expect, describe, it, beforeEach } from 'vitest'
-import { RegisterUseCase } from '../domain/use-cases/register'
 import { compare } from 'bcryptjs'
-import { InMemoryUsersRepository } from '@/tests/domain/repositories/in-memory/in-memory-users-repository'
-import { UserAlreeadyExistsError } from '../domain/use-cases/errors/user-already-exists'
+import { InMemoryUsersRepository } from '@/domain/repositories/in-memory/in-memory-users-repository'
+import { RegisterUseCase } from '@/domain/use-cases/register'
+import { UserAlreeadyExistsError } from '@/domain/use-cases/errors/user-already-exists'
 
 // ATENTION
 // sut = system under test ou variável principal que está sendo testada
