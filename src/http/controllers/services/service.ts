@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { FastifyRequest, FastifyReply } from 'fastify'
-import { makeCreateServiceUseCase } from '@/tests/domain/use-cases/factories/make-create-service-use-case'
-import { ServiceAlreadyExistsError } from '@/tests/domain/use-cases/errors/service-already-exists'
+import { makeCreateServiceUseCase } from '@/domain/use-cases/factories/make-create-service-use-case'
+import { ServiceAlreadyExistsError } from '@/domain/use-cases/errors/service-already-exists'
 
 export async function createServiceController(
   request: FastifyRequest,

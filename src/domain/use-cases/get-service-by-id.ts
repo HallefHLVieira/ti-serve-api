@@ -1,8 +1,8 @@
 import { Phone, Service } from '@prisma/client'
-import { IServicesRepository } from '@/tests/domain/repositories/services-repository'
-import { IPhonesRepository } from '@/tests/domain/repositories/phones-repository'
-import { IFollowersRepository } from '@/tests/domain/repositories/followers-repository'
 import { ResourceNotFoundError } from './errors/resource-not-found-error'
+import { IServicesRepository } from '../repositories/services-repository'
+import { IPhonesRepository } from '../repositories/phones-repository'
+import { IFollowersRepository } from '../repositories/followers-repository'
 
 interface FetchServiceByIdRequest {
   serviceId: string

@@ -1,7 +1,7 @@
-import { PrismaServicesRepository } from '@/tests/domain/repositories/prisma/prisma-services-repository'
+import { PrismaServicesRepository } from '@/domain/repositories/prisma/prisma-services-repository'
 import { GetServiceByIdUseCase } from '../get-service-by-id'
-import { PrismaPhonesRepository } from '@/tests/domain/repositories/prisma/prisma-phones-repository'
-import { PrismaFollowersRepository } from '@/repositories/prisma/prisma.followers-repository'
+import { PrismaPhonesRepository } from '@/domain/repositories/prisma/prisma-phones-repository'
+import { PrismaFollowersRepository } from '@/domain/repositories/prisma/prisma.followers-repository'
 
 export function makeGetServiceByIdUseCase() {
   const servicesRepository = new PrismaServicesRepository()

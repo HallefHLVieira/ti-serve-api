@@ -4,6 +4,7 @@ import { verifyJWT } from '@/http/middlewares/verify-jwt'
 import { fetchServicesController } from './fetch-services'
 import { fetchServicesByUserController } from './fetch-services-by-user'
 import { fetchServicesByIdController } from './fetch-service-by-id'
+import { uploadBannerController } from './upload-banner'
 // import { verifyUserRole } from '@/http/middlewares/verify-user-role'
 
 export async function servicesRoutes(app: FastifyInstance) {
@@ -14,6 +15,8 @@ export async function servicesRoutes(app: FastifyInstance) {
     // { onRequest: [verifyUserRole('ADMIN')] },
     createServiceController,
   )
+
+  app.post('/v1/services/:id/banner/upload', uploadBannerController)
 
   app.get('/v1/services', fetchServicesController)
   app.get('/v1/services/user', fetchServicesByUserController)

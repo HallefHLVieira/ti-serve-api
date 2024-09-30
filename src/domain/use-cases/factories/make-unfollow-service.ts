@@ -1,4 +1,4 @@
-import { PrismaFollowersRepository } from '@/repositories/prisma/prisma.followers-repository'
+import { PrismaFollowersRepository } from '@/domain/repositories/prisma/prisma.followers-repository'
 import { UserUnFollowServiceUseCase } from '../user-unfollow-service'
 
 export function makeUserUnFollowRepositoryUseCase() {

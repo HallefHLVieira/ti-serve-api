@@ -48,6 +48,7 @@ model Service {
   zip_code    String?
   latitude    Decimal?
   longitude   Decimal?
+  banner_key  String?
   created_at  DateTime  @default(now())
   updated_at  DateTime  @updatedAt
   deleted_at  DateTime?
