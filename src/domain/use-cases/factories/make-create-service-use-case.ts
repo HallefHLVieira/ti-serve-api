@@ -1,6 +1,6 @@
-import { PrismaServicesRepository } from '@/tests/domain/repositories/prisma/prisma-services-repository'
+import { PrismaServicesRepository } from '@/domain/repositories/prisma/prisma-services-repository'
 import { ServiceUseCase } from '../service'
-import { PrismaPhonesRepository } from '@/tests/domain/repositories/prisma/prisma-phones-repository'
+import { PrismaPhonesRepository } from '@/domain/repositories/prisma/prisma-phones-repository'
 
 export function makeCreateServiceUseCase() {
   const servicesRepository = new PrismaServicesRepository()

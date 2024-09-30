@@ -1,6 +1,6 @@
-import { PrismaServicesRepository } from '@/tests/domain/repositories/prisma/prisma-services-repository'
+import { PrismaServicesRepository } from '@/domain/repositories/prisma/prisma-services-repository'
 import { FetchServiceUseCase } from '../fetch-services'
-import { PrismaFollowersRepository } from '@/repositories/prisma/prisma.followers-repository'
+import { PrismaFollowersRepository } from '@/domain/repositories/prisma/prisma.followers-repository'
 
 export function makeFetchServicesUseCase() {
   const servicesRepository = new PrismaServicesRepository()
