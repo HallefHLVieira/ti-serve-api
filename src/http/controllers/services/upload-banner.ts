@@ -1,10 +1,7 @@
 import { z } from 'zod'
 import { FastifyRequest, FastifyReply } from 'fastify'
-import { randomUUID } from 'node:crypto'
-import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
-import { PutObjectCommand } from '@aws-sdk/client-s3'
-import { r2 } from '@/lib/cloudfare'
 import { PrismaClient } from '@prisma/client'
+import { generateSignedUrl } from '@/domain/use-cases/upload-generate-signed-url'
 
 const prisma = new PrismaClient()
 
@@ -13,6 +10,7 @@ export async function uploadBannerController(
   reply: FastifyReply,
 ) {
   try {
+    // Data validation
     const uploadBodySchema = z.object({
       name: z.string().min(1),
       contentType: z.string().regex(/\w+\/[-+.\w]+/),
@@ -25,17 +23,7 @@ export async function uploadBannerController(
     const { name, contentType } = uploadBodySchema.parse(req.body)
     const { id } = uploadParamsSchema.parse(req.params)
 
-    const fileKey = randomUUID().concat('-').concat(name)
-
-    const signedUrl = await getSignedUrl(
-      r2,
-      new PutObjectCommand({
-        Bucket: 'tiserve-dev',
-        Key: fileKey,
-        ContentType: contentType,
-      }),
-      { expiresIn: 300 },
-    )
+    const { fileKey, signedUrl } = await generateSignedUrl(name, contentType)
 
     const updatedServiceData = { banner_key: fileKey }
 
