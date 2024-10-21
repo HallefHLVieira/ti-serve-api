@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { PrismaClient } from '@prisma/client'
-import { generateSignedUrl } from '@/domain/use-cases/upload-generate-signed-url'
+import { generateSignedUrlUseCase } from '@/domain/use-cases/generate-upload-signed-url'
 
 const prisma = new PrismaClient()
 
@@ -23,7 +23,10 @@ export async function uploadBannerController(
     const { name, contentType } = uploadBodySchema.parse(req.body)
     const { id } = uploadParamsSchema.parse(req.params)
 
-    const { fileKey, signedUrl } = await generateSignedUrl(name, contentType)
+    const { fileKey, signedUrl } = await generateSignedUrlUseCase(
+      name,
+      contentType,
+    )
 
     const updatedServiceData = { banner_key: fileKey }
 
