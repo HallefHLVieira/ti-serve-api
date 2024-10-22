@@ -1,5 +1,5 @@
 import { generateFileKey } from '@/scripts/fileKeyGenerator'
-import { generateSignedUrl } from '@/scripts/uploadService'
+import { generateUploadSignedUrl } from '@/scripts/uploadServiceBanner'
 
 export async function generateSignedUrlUseCase(
   name: string,
@@ -7,7 +7,7 @@ export async function generateSignedUrlUseCase(
 ): Promise<{ fileKey: string; signedUrl: string }> {
   const fileKey = generateFileKey(name)
 
-  const signedUrl = await generateSignedUrl(fileKey, contentType)
+  const signedUrl = await generateUploadSignedUrl(fileKey, contentType)
 
   return { fileKey, signedUrl }
 }
